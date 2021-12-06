@@ -116,7 +116,7 @@ a {
 }
 
 a:hover {
-    color: #00c292;
+    color: #00aa88;
     text-decoration: none;
 }
 
@@ -265,7 +265,7 @@ body {}
 /*  2.  Header Top CSS
 /*----------------------------------------*/
 .header-top-area, .footer-copyright-area {
-    background: #00c292;
+    background: #00aa88;
 }
 
 .logo-area {
@@ -277,14 +277,14 @@ body {}
 }
 
 .nav.notika-top-nav .open>a, .nav.notika-top-nav .open>a:focus, .nav.notika-top-nav .open>a:hover {
-    background: #00c292;
-    border-color: 0px solid #00c292;
+    background: #00aa88;
+    border-color: 0px solid #00aa88;
 
 }
 
 .nav.notika-top-nav>li>a:focus, .nav.notika-top-nav>li>a:hover {
     text-decoration: none;
-    background-color: #00c292;
+    background-color: #00aa88;
 }
 
 .navbar-nav>li>a {
@@ -409,7 +409,7 @@ body {}
 }
 
 .header-top-menu .nav.notika-top-nav li .message-dd .hd-mg-va a:hover {
-    color: #00c292;
+    color: #00aa88;
 }
 
 .hd-task-info {
@@ -473,7 +473,7 @@ body {}
     top: 0px;
     right: 0px;
     font-size: 12px;
-    color: #00c292;
+    color: #00aa88;
 }
 
 .ntd-ctn {
@@ -635,7 +635,7 @@ ul.notika-menu-wrap li a {
 }
 
 .mean-container .mean-nav ul li a:hover {
-    color: #00c292;
+    color: #00aa88;
 }
 
 .box-layout .header-top-area {
@@ -715,7 +715,7 @@ ul.notika-menu-wrap li a {
 }
 
 .recent-post-icon a:hover, .curved-icon a:hover, .recent-items-icon a:hover, .realtime-icon a:hover {
-    color: #00c292;
+    color: #00aa88;
     transition: all .4s ease 0s;
 }
 
@@ -861,12 +861,12 @@ ul.notika-menu-wrap li a {
 }
 
 .recent-post-flex.rc-ps-vw .recent-post-line p:hover {
-    color: #00c292;
+    color: #00aa88;
     transition: all .4s ease 0s;
 }
 
 .recent-post-items .recent-post-signle:hover .recent-post-it-ctn h2, .blog-ctn .vw-at:hover {
-    color: #00c292;
+    color: #00aa88;
     transition: all .4s ease 0s;
 }
 
@@ -946,7 +946,7 @@ ul.notika-menu-wrap li a {
     position: absolute;
     left: 10px;
     border-radius: 3px;
-    background: #00c292;
+    background: #00aa88;
     padding: 3px;
     color: white;
     cursor: pointer;
@@ -1049,8 +1049,8 @@ ul.notika-menu-wrap li a {
 }
 
 .checkbox-primary input[type="checkbox"]:checked+label::before {
-    background-color: #00c292;
-    border-color: #00c292;
+    background-color: #00aa88;
+    border-color: #00aa88;
 }
 
 .checkbox label::before {
@@ -1097,12 +1097,12 @@ ul.notika-menu-wrap li a {
     font-size: 14px;
     color: #fff;
     border: none;
-    background: #00c292;
+    background: #00aa88;
 }
 
 .notika-todo-btn a:hover, .notika-todo-btn a:active, .notika-todo-btn a:focus, .notika-add-todo:hover, .notika-add-todo:active, .notika-add-todo:focus, .notika-add-todo:visited, .notika-chat-btn:hover, .notika-chat-btn:active, .notika-chat-btn:focus, .notika-chat-btn:visited {
     color: #fff;
-    background: #00c292;
+    background: #00aa88;
     outline: none;
 }
 
@@ -1178,7 +1178,7 @@ ul.notika-menu-wrap li a {
 }
 
 .conversation-list .odd .ctext-wrap {
-    background: #00c292 !important;
+    background: #00aa88 !important;
 }
 
 .conversation-list li {
@@ -1206,7 +1206,7 @@ ul.notika-menu-wrap li a {
 
 .conversation-list .odd .ctext-wrap:after {
     border-color: rgba(238, 238, 242, 0) !important;
-    border-left-color: #00c292 !important;
+    border-left-color: #00aa88 !important;
     left: 100% !important;
     top: 20% !important;
 }
@@ -1228,7 +1228,7 @@ ul.notika-menu-wrap li a {
 .widget-signup-list a {
     height: 46px;
     border-radius: 50%;
-    background: #00c292;
+    background: #00aa88;
     width: 46px;
     display: inline-block;
     margin: 7.2px 4.4px 7.2px 0px;
@@ -1319,7 +1319,7 @@ ul.notika-menu-wrap li a {
 }
 
 .skill .progress:nth-child(1) .progress-bar {
-    background: #00c292;
+    background: #00aa88;
 }
 
 .skill .progress:nth-child(2) .progress-bar {
@@ -1350,7 +1350,7 @@ ul.notika-menu-wrap li a {
 }
 
 .view-all-onging a:hover {
-    color: #00c292;
+    color: #00aa88;
     transition: all .4s ease 0s;
 }
 
@@ -1429,7 +1429,7 @@ ul.notika-menu-wrap li a {
 }
 
 .form-single input[type="text"]:focus, .form-single input[type="email"]:focus, .form-single input[type="number"]:focus, .form-single textarea:focus {
-    border: 1px solid #00c292;
+    border: 1px solid #00aa88;
     transition: all .4s ease 0s;
 }
 
@@ -1445,7 +1445,7 @@ ul.notika-menu-wrap li a {
 }
 
 .button.btn {
-    background: #00c292;
+    background: #00aa88;
     border-radius: 2px;
     outline: none;
     color: #fff;
@@ -1482,7 +1482,7 @@ ul.notika-menu-wrap li a {
 }
 
 .widget-tabs-list .nav-tabs:not([data-tab-color])>li>a:after, .wizard-cts-st .nav.nav-pills:not([data-tab-color])>li>a:after {
-    background: #00c292;
+    background: #00aa88;
 }
 
 .widget-tabs-list .nav-tabs li.active>a:after, .wizard-cts-st .nav.nav-pills>li.active>a:after {
@@ -1599,7 +1599,7 @@ ul.tab-ctn-list li:last-child {
 }
 
 .search-eg-table i {
-    color: #00c292;
+    color: #00aa88;
     margin-left: 2px;
 }
 
@@ -1786,7 +1786,7 @@ ul.wizard-nav-ac li a {
     height: 35px;
     width: 35px;
     border-radius: 50%;
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
     display: inline-block;
 }
@@ -1894,7 +1894,7 @@ ul.wizard-nav-ac li .disabled {
 }
 
 .dropdown-trig-sgn .btn {
-    background: #00c292;
+    background: #00aa88;
     border: none;
     border-radius: 3px;
     outline: none;
@@ -1904,7 +1904,7 @@ ul.wizard-nav-ac li .disabled {
 }
 
 .dropdown-trig-sgn .btn:hover, .dropdown-trig-sgn .btn:focus, .dropdown-trig-sgn .btn:active {
-    background: #00c292;
+    background: #00aa88;
     border: none;
     outline: none;
 }
@@ -2016,7 +2016,7 @@ ul.wizard-nav-ac li .disabled {
 }
 
 .modal-ft .btn-modal, .modals-default-cl .btn-info, .modal-sm .modal-footer .btn-default, .modal-large .modal-footer .btn-default, .modals-default .modal-footer .btn-default {
-    background: #00c292;
+    background: #00aa88;
     outline: none;
     color: #fff;
     border-radius: 3px;
@@ -2036,7 +2036,7 @@ ul.wizard-nav-ac li .disabled {
 }
 
 .modal-ft .btn-modal:focus, .modal-ft .btn-modal:active, .modal-ft .btn-modal:hover, .modals-default-cl .btn-info:focus, .modals-default-cl .btn-info:active, .modals-default-cl .btn-info:hover, .modals-default .modal-footer .btn-default:focus, .modals-default .modal-footer .btn-default:active, .modals-default .modal-footer .btn-default:hover, .modal-sm .modal-footer .btn-default:focus, .modal-sm .modal-footer .btn-default:active, .modal-sm .modal-footer .btn-default:hover, .modal-large .modal-footer .btn-default:focus, .modal-large .modal-footer .btn-default:active, .modal-large .modal-footer .btn-default:hover {
-    background: #00c292;
+    background: #00aa88;
     outline: none;
     color: #fff;
     box-shadow: none;
@@ -2046,7 +2046,7 @@ ul.wizard-nav-ac li .disabled {
     position: absolute;
     right: -15px;
     top: -15px;
-    background: #00c292;
+    background: #00aa88;
     opacity: 1;
     color: #fff;
     height: 26px;
@@ -2087,7 +2087,7 @@ ul.wizard-nav-ac li .disabled {
 }
 
 .modals-hd a:hover, .accordion-hd a:hover, .tab-hd a:hover {
-    color: #00c292;
+    color: #00aa88;
 }
 
 .modals-default-cl .nk-red.btn-info {
@@ -2272,7 +2272,7 @@ ul.wizard-nav-ac li .disabled {
 }
 
 .panel-group[data-collapse-color=nk-green] .panel-collapse .panel-heading.active .panel-title>a:after {
-    background: #00c292
+    background: #00aa88
 }
 
 .panel-group[data-collapse-color=nk-red] .panel-collapse .panel-heading.active .panel-title>a:after {
@@ -2343,23 +2343,23 @@ ul.wizard-nav-ac li .disabled {
 
 .tooltip-inner {
     padding: 5px 15px;
-    background: #00c292;
+    background: #00aa88;
 }
 
 .tooltip.right .tooltip-arrow {
-    border-right-color: #00c292;
+    border-right-color: #00aa88;
 }
 
 .tooltip.bottom .tooltip-arrow {
-    border-bottom-color: #00c292;
+    border-bottom-color: #00aa88;
 }
 
 .tooltip.top .tooltip-arrow {
-    border-top-color: #00c292;
+    border-top-color: #00aa88;
 }
 
 .tooltip.left .tooltip-arrow {
-    border-left-color: #00c292;
+    border-left-color: #00aa88;
 }
 
 .tooltip.in {
@@ -2367,12 +2367,12 @@ ul.wizard-nav-ac li .disabled {
 }
 
 .tooltips-ctn a {
-    color: #00c292;
+    color: #00aa88;
 }
 
 .tooltips-static .btn-primary, .popover-cl-pro .btn-primary {
     font-size: 14px;
-    background: #00c292;
+    background: #00aa88;
     border: none;
     border-radius: 3px;
     outline: none;
@@ -2382,7 +2382,7 @@ ul.wizard-nav-ac li .disabled {
 }
 
 .tooltips-static .btn-primary:hover, .tooltips-static .btn-primary:focus, .tooltips-static .btn-primary:active, .popover-cl-pro .btn-primary:hover, .popover-cl-pro .btn-primary:focus, .popover-cl-pro .btn-primary:active {
-    background: #00c292;
+    background: #00aa88;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
     outline: none;
 }
@@ -2731,7 +2731,7 @@ ol, ul {
     display: block;
     height: 30px;
     width: 30px;
-    background: #00c292;
+    background: #00aa88;
     border-radius: 50%;
     color: #fff;
     margin: 5px 0px;
@@ -2769,7 +2769,7 @@ ol, ul {
 }
 
 .inbox-status ul.inbox-st-nav li i {
-    color: #00c292;
+    color: #00aa88;
     margin-right: 5px;
     font-size: 16px;
 }
@@ -2793,7 +2793,7 @@ hr {
 
 .search-input .search-ib {
     border: none;
-    background: #00c292;
+    background: #00aa88;
     font-size: 14px;
     position: absolute;
     right: 0;
@@ -2807,7 +2807,7 @@ hr {
 
 .search-input .search-ib:hover, .search-input .search-ib:focus, .search-input .search-ib:active {
     border: none;
-    background: #00c292;
+    background: #00aa88;
     border-radius: 0px;
     box-shadow: none;
     outline: none;
@@ -2951,7 +2951,7 @@ hr {
 }
 
 .pagination-inbox ul.wizard-nav-ac li.active a {
-    background: #00c292;
+    background: #00aa88;
 }
 
 .pagination-inbox {
@@ -2972,9 +2972,9 @@ hr {
 }
 
 .active-hook .btn-default:hover, .active-hook .btn-default:active, .active-hook .btn-default:focus {
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
-    border: 1px solid #00c292;
+    border: 1px solid #00aa88;
     transition: all .4s ease 0s;
     outline: none;
 }
@@ -3015,7 +3015,7 @@ hr {
 }
 
 .mail-ads a, .view-mail-atn a, .cmp-int-box a {
-    color: #00c292;
+    color: #00aa88;
 }
 
 .view-mail-atn h2, .cmp-int-box h5 {
@@ -3051,7 +3051,7 @@ hr {
 }
 
 .dw-atc-sn .dw-al-ft {
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
     padding: 0px 10px;
     font-size: 14px;
@@ -3064,7 +3064,7 @@ hr {
 .compose-ml .btn {
     width: 100%;
     padding: 5px 15px;
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
     border-radius: 2px;
     outline: none;
@@ -3108,7 +3108,7 @@ hr {
 }
 
 .cmp-int-in input[type="text"]:focus {
-    border: 1px solid #00c292;
+    border: 1px solid #00aa88;
     outline: none;
     transition: all .4s ease 0s;
 }
@@ -3135,12 +3135,12 @@ hr {
 }
 
 .cmp-int-box .note-editor.note-frame:focus {
-    border: 1px solid #00c292;
+    border: 1px solid #00aa88;
     outline: none;
 }
 
 .multiupload-sys .dropzone.dropzone-custom {
-    border: 2px dashed #00c292;
+    border: 2px dashed #00aa88;
 }
 
 .multiupload-sys i {
@@ -3234,7 +3234,7 @@ hr {
 }
 
 .table.table-cl>tbody>tr.active>td, .table.table-cl>tbody>tr.active>th, .table.table-cl>tbody>tr>td.active, .table.table-cl>tbody>tr>th.active, .table.table-cl>tfoot>tr.active>td, .table.table-cl>tfoot>tr.active>th, .table.table-cl>tfoot>tr>td.active, .table.table-cl>tfoot>tr>th.active, .table.table-cl>thead>tr.active>td, .table.table-cl>thead>tr.active>th, .table.table-cl>thead>tr>td.active, .table.table-cl>thead>tr>th.active {
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
 }
 
@@ -3302,7 +3302,7 @@ hr {
 }
 
 .dataTables_filter input:focus, .dataTables_filter select:focus, .dataTables_length input:focus, .dataTables_length select:focus, .dataTables_length option:focus {
-    border: 1px solid #00c292;
+    border: 1px solid #00aa88;
 }
 
 .dataTables_wrapper .dataTables_filter {
@@ -3351,7 +3351,7 @@ hr {
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:focus, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-    background: #00c292;
+    background: #00aa88;
     color: #fff !important;
 }
 
@@ -3371,7 +3371,7 @@ hr {
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover, .dataTables_wrapper .dataTables_paginate .paginate_button:focus {
     color: white !important;
     border: 0px solid #ccc;
-    background: #00c292 !important;
+    background: #00aa88 !important;
 }
 
 #data-table-basic {
@@ -3410,7 +3410,7 @@ hr {
 }
 
 .nk-int-st:not([class*=has-]):after {
-    background: #00c292;
+    background: #00aa88;
 }
 
 .nk-int-st:not(.disabled):after, .nk-int-st:not(.readonly):after {
@@ -3673,7 +3673,7 @@ textarea.auto-size {
 }
 
 .bootstrap-select .dropdown-menu>.active>a, .bootstrap-select .dropdown-menu>.active>a:focus, .bootstrap-select .dropdown-menu>.active>a:hover {
-    background-color: #00c292;
+    background-color: #00aa88;
 }
 
 .bootstrap-select .bs-searchbox {
@@ -3751,7 +3751,7 @@ textarea.auto-size {
 }
 
 .chosen-select-act .chosen-container .chosen-results li.highlighted {
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
 }
 
@@ -3823,7 +3823,7 @@ textarea.auto-size {
 }
 
 .bootstrap-select .dropdown-menu>li>a:focus, .bootstrap-select .dropdown-menu>li>a:hover, .bootstrap-select .dropdown-menu>li>a:active {
-    background-color: #00c292 !important;
+    background-color: #00aa88 !important;
     color: #fff !important;
 }
 
@@ -3841,7 +3841,7 @@ textarea.auto-size {
     border-right: 0px solid #ccc;
     border-bottom: 1px solid #ccc;
     border-radius: 2px;
-    background-color: #00c292;
+    background-color: #00aa88;
     background-image: none;
     color: #fff;
     padding: 5px 10px;
@@ -3954,7 +3954,7 @@ textarea.auto-size {
 }
 
 .nk-toggle-switch:not([data-ts-color]) input:not(:disabled):checked+.ts-helper:before {
-    background: #00c292;
+    background: #00aa88;
 }
 
 .nk-toggle-switch:not([data-ts-color]) input:not(:disabled):checked+.ts-helper:active:before {
@@ -4055,7 +4055,7 @@ textarea.auto-size {
 }
 
 .nk-toggle-switch[data-ts-color=green] input:not(:disabled):checked+.ts-helper:before {
-    background: #00c292;
+    background: #00aa88;
 }
 
 .nk-toggle-switch[data-ts-color=green] input:not(:disabled):checked+.ts-helper:active:before {
@@ -4116,7 +4116,7 @@ textarea.auto-size {
 }
 
 .datepicker-days .table-condensed thead tr {
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
 }
 
@@ -4138,12 +4138,12 @@ textarea.auto-size {
 }
 
 .datepicker thead tr:first-child th:hover, .datepicker tfoot tr th:hover {
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
 }
 
 .datepicker table tr td.active:hover, .datepicker table tr td.active:hover:hover, .datepicker table tr td.active.disabled:hover, .datepicker table tr td.active.disabled:hover:hover, .datepicker table tr td.active:focus, .datepicker table tr td.active:hover:focus, .datepicker table tr td.active.disabled:focus, .datepicker table tr td.active.disabled:hover:focus, .datepicker table tr td.active:active, .datepicker table tr td.active:hover:active, .datepicker table tr td.active.disabled:active, .datepicker table tr td.active.disabled:hover:active, .datepicker table tr td.active.active, .datepicker table tr td.active:hover.active, .datepicker table tr td.active.disabled.active, .datepicker table tr td.active.disabled:hover.active, .open .dropdown-toggle.datepicker table tr td.active, .open .dropdown-toggle.datepicker table tr td.active:hover, .open .dropdown-toggle.datepicker table tr td.active.disabled, .open .dropdown-toggle.datepicker table tr td.active.disabled:hover {
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
 }
 
@@ -4170,13 +4170,13 @@ textarea.auto-size {
 }
 
 .datepicker table tr td span.active:hover, .datepicker table tr td span.active:hover:hover, .datepicker table tr td span.active.disabled:hover, .datepicker table tr td span.active.disabled:hover:hover, .datepicker table tr td span.active:focus, .datepicker table tr td span.active:hover:focus, .datepicker table tr td span.active.disabled:focus, .datepicker table tr td span.active.disabled:hover:focus, .datepicker table tr td span.active:active, .datepicker table tr td span.active:hover:active, .datepicker table tr td span.active.disabled:active, .datepicker table tr td span.active.disabled:hover:active, .datepicker table tr td span.active.active, .datepicker table tr td span.active:hover.active, .datepicker table tr td span.active.disabled.active, .datepicker table tr td span.active.disabled:hover.active, .open .dropdown-toggle.datepicker table tr td span.active, .open .dropdown-toggle.datepicker table tr td span.active:hover, .open .dropdown-toggle.datepicker table tr td span.active.disabled, .open .dropdown-toggle.datepicker table tr td span.active.disabled:hover {
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
 }
 
 .datepicker-months .table-condensed thead tr, .datepicker-years .table-condensed thead tr {
     height: 70px;
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
 }
 
@@ -4228,7 +4228,7 @@ textarea.auto-size {
 }
 
 .summernote-clickable .btn-primary, .summernote-clickable .btn-success, .modal-footer .btn-primary {
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
     border: none;
     border-radius: 2px;
@@ -4238,7 +4238,7 @@ textarea.auto-size {
 }
 
 .summernote-clickable .btn-primary:active, .summernote-clickable .btn-primary:focus, .summernote-clickable .btn-success:focus, .summernote-clickable .btn-success:active, .modal-footer .btn-primary:focus, .modal-footer .btn-primary:active {
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
     border: none;
     border-radius: 2px;
@@ -4311,7 +4311,7 @@ textarea.auto-size {
 }
 
 .dropzone.dropzone-nk {
-    border: 2px dashed #00c292;
+    border: 2px dashed #00aa88;
 }
 
 .dropzone.dropzone-nk i {
@@ -4378,7 +4378,7 @@ textarea.auto-size {
 .login-content, .error-page-area {
     min-height: 100vh;
     text-align: center;
-    background-color: #00c292;
+    background-color: #00aa88;
 }
 
 .login-content:before, .error-page-area:before {
@@ -4542,16 +4542,16 @@ textarea.auto-size {
 }
 
 .btn-login.btn-success, .images-cropper-pro .btn, .images-action-pro .btn, .notika-todo-btn .btn, .btn.notika-add-todo, .btn.notika-chat-btn {
-    background-color: #00c292;
-    border-color: #00c292;
+    background-color: #00aa88;
+    border-color: #00aa88;
     border: 0px solid #ccc;
     outline: none;
     box-shadow: none;
 }
 
 .btn-login.btn-success:hover, .btn-login.btn-success:focus, .btn-login.btn-success:active, .images-cropper-pro .btn:hover, .images-cropper-pro .btn:focus, .images-cropper-pro .btn:active, .images-action-pro .btn:hover, .images-action-pro .btn:focus, .images-action-pro .btn:active, .notika-todo-btn .btn:hover, .notika-todo-btn .btn:focus, .notika-todo-btn .btn:active, .btn.notika-add-todo:hover, .btn.notika-add-todo:focus, .btn.notika-add-todo:active, .btn.notika-chat-btn:hover, .btn.notika-chat-btn:focus, .btn.notika-chat-btn:active {
-    background-color: #00c292;
-    border-color: #00c292;
+    background-color: #00aa88;
+    border-color: #00aa88;
     border: 0px solid #ccc;
     outline: none;
     box-shadow: none;
@@ -4576,7 +4576,7 @@ textarea.auto-size {
 /*  39.  Invoice CSS
 /*----------------------------------------*/
 .invoice-img {
-    background: #00c292;
+    background: #00aa88;
     text-align: center;
     padding: 40px 0px;
 }
@@ -4614,7 +4614,7 @@ textarea.auto-size {
 }
 
 .invoice-hs {
-    background: #00c292;
+    background: #00aa88;
     padding: 20px 30px;
 }
 
@@ -4662,7 +4662,7 @@ textarea.auto-size {
 .invoice-print .btn {
     height: 50px;
     width: 50px;
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
     border-radius: 50%;
     line-height: 40px;
@@ -4705,7 +4705,7 @@ textarea.auto-size {
 }
 
 .error-page-wrap .btn {
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
     border-radius: 2px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .16), 0 2px 10px rgba(0, 0, 0, .12);
@@ -4715,12 +4715,12 @@ textarea.auto-size {
 }
 
 .error-page-wrap .counter {
-    color: #00c292;
+    color: #00aa88;
 }
 
 .error-page-wrap i {
     font-size: 40px;
-    color: #00c292;
+    color: #00aa88;
     padding-bottom: 15px !important;
     display: block;
 }
@@ -4762,7 +4762,7 @@ textarea.auto-size {
 }
 
 .main-menu-lv-int ul.main-menu-lv>li:hover>a {
-    color: #00c292;
+    color: #00aa88;
     transition: all .4s ease 0s;
 }
 
@@ -4778,7 +4778,7 @@ textarea.auto-size {
     opacity: 0;
     visibility: hidden;
     transition: all .4s ease 0s;
-    border-top: 2px solid #00c292;
+    border-top: 2px solid #00aa88;
 }
 
 .main-menu-lv-int ul.main-menu-lv li:hover ul.menu-dp-lt {
@@ -4797,12 +4797,12 @@ textarea.auto-size {
 }
 
 .main-menu-lv-int ul.main-menu-lv li:hover ul.menu-dp-lt li a:hover {
-    color: #00c292;
+    color: #00aa88;
     transition: all .4s ease 0s;
 }
 
 .main-menu-lv-int ul.main-menu-lv li ul.menu-dp-lt li a:hover {
-    color: #00c292;
+    color: #00aa88;
     padding: 8px 5px;
     transition: all .4s ease 0s;
 }
@@ -4858,7 +4858,7 @@ textarea.auto-size {
 }
 
 .nk-cd-ed-wp .cm-s-ambiance .CodeMirror-gutters {
-    background: #00c292;
+    background: #00aa88;
 }
 
 /*----------------------------------------*/
@@ -4910,7 +4910,7 @@ textarea.auto-size {
 }
 
 .form-single.widget-form input[type="text"]:focus {
-    border: 0px solid #00c292;
+    border: 0px solid #00aa88;
 }
 
 .form-single.widget-form {
@@ -4942,8 +4942,8 @@ textarea.auto-size {
 }
 
 .btn-group.nk-email-inbox .btn-default:hover {
-    background: #00c292;
-    border: 1px solid #00c292;
+    background: #00aa88;
+    border: 1px solid #00aa88;
 }
 
 .cmp-int-box .note-popover .popover .popover-content>.btn-group, .cmp-int-box .panel-heading.note-toolbar>.btn-group {
@@ -4980,7 +4980,7 @@ textarea.auto-size {
 }
 
 .modal-footer .btn-primary[disabled]:focus, .modal-footer .btn-primary[disabled]:hover {
-    background: #00c292;
+    background: #00aa88;
 }
 
 .menu-it-icon-pro i {
@@ -4991,7 +4991,7 @@ textarea.auto-size {
 }
 
 .menu-it-icon-pro.mn-ic-cl i {
-    color: #00c292;
+    color: #00aa88;
 }
 
 /*----------------------------------------*/
@@ -5058,7 +5058,7 @@ textarea.auto-size {
 
 .sidebar-nav.left-sidebar-menu-pro .metismenu a:hover, .sidebar-nav.left-sidebar-menu-pro .metismenu a:focus, .sidebar-nav.left-sidebar-menu-pro .metismenu a:active {
     color: #fff;
-    background: #00c292;
+    background: #00aa88;
 }
 
 .sidebar-nav.left-sidebar-menu-pro .metismenu li a:hover .icon-wrap, .sidebar-nav.left-sidebar-menu-pro .metismenu li a:focus .icon-wrap, .sidebar-nav.left-sidebar-menu-pro .metismenu li a:active .icon-wrap {
@@ -5101,7 +5101,7 @@ textarea.auto-size {
 }
 
 .profile-action ul.pro-action-mn li a:hover {
-    color: #00c292;
+    color: #00aa88;
     transition: all .4s ease 0s;
 }
 
@@ -5134,7 +5134,7 @@ textarea.auto-size {
 }
 
 .menu-switcher-pro .btn.bar-button-pro {
-    background: #00c292;
+    background: #00aa88;
     border: none;
     outline: none;
     box-shadow: none;
@@ -5144,7 +5144,7 @@ textarea.auto-size {
 }
 
 .menu-switcher-pro .btn.bar-button-pro:hover, .menu-switcher-pro .btn.bar-button-pro:focus, .menu-switcher-pro .btn.bar-button-pro:active {
-    background: #00c292;
+    background: #00aa88;
     border: none;
     outline: none;
     box-shadow: none;
@@ -5601,7 +5601,7 @@ body.box-layout {
 
 .breadcomb-icon i {
     font-size: 20px;
-    color: #00c292;
+    color: #00aa88;
     padding: 15px;
     position: relative;
     border-radius: 50%;
@@ -5636,7 +5636,7 @@ body.box-layout {
 }
 
 .breadcomb-report .btn {
-    background: #00c292;
+    background: #00aa88;
     color: #fff;
     box-shadow: none;
     border-radius: 3px;
@@ -5644,7 +5644,7 @@ body.box-layout {
 }
 
 .breadcomb-report .btn:focus, .breadcomb-report .btn:active, .breadcomb-report .btn:hover {
-    background: #00c292;
+    background: #00aa88;
     box-shadow: none;
     outline: none;
 }
@@ -5675,7 +5675,7 @@ body.box-layout {
 /*  59. Notika custom scrollbar CSS
 /*----------------------------------------*/
 .mCS-light-1.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
-    background-color: #00c292;
+    background-color: #00aa88;
 }
 
 .mCS-light-1.mCSB_scrollTools .mCSB_draggerRail {
