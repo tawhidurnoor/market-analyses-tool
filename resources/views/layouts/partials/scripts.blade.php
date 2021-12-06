@@ -64,6 +64,3 @@
 <!-- main JS
 		============================================ -->
 <script src="{{asset('assets/js/main.js')}}"></script>
-<!-- tawk chat JS
-		============================================ -->
-<script src="{{asset('assets/js/tawk-chat.js')}}"></script>
