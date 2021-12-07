@@ -1,9 +1,12 @@
 @extends('layouts.full.mainlayout')
 
 @section('head')
-<title>Dashboard One | Notika - Notika Admin Template</title>
+<title>User Roles | Market Analysese Tool</title>
 @endsection
 
+<!-- Data Table CSS
+============================================ -->
+<link rel="stylesheet" href="{{asset('assets/css/jquery.dataTables.min.css')}}">
 @section('body')
 
 <!-- Breadcomb area Start-->
@@ -16,11 +19,11 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
-                                    <i class="notika-icon notika-windows"></i>
+                                    <i class="notika-icon notika-support"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Data Table</h2>
-                                    <p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
+                                    <h2>User Roles</h2>
+                                    <p>Manage all <span class="bread-ntd">User Role</span></p>
                                 </div>
                             </div>
                         </div>
@@ -538,4 +541,9 @@
 @endsection
 
 @section('scripts')
+<!-- Data Table JS
+		============================================ -->
+<script src="{{asset('assets/js/data-table/jquery.dataTables.min.js')}}">
+</script>
+<script src="{{asset('assets/js/data-table/data-table-act.js')}}"></script>
 @endsection

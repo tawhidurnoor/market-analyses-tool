@@ -109,22 +109,22 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
 
-                    <li class="active"> <a href="/">
+                    <li class="{{ ( request()->segment(1)=='' ) ? 'active':'' }}"> <a href="/">
                             <i class="notika-icon notika-house"></i> Home</a>
                     </li>
 
-                    <li>
+                    <li class="{{ ( request()->segment(1)=='roles' ) ? 'active':'' }}">
                         <a data-toggle="tab" href="#userManagement"><i class="notika-icon notika-support"></i> User Management</a>
                     </li>
                 </ul>
 
                 <!-- Bellow gose the nested item of any tab, will be copied from tempete file if needed -->
                 <div class="tab-content custom-menu-content">
-                    <div id="userManagement" class="tab-pane in notika-tab-menu-bg animated flipInX">
+                    <div id="userManagement" class="tab-pane {{ ( request()->segment(1)=='roles' ) ? 'active':'' }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="index.html">Users</a>
                             </li>
-                            <li><a href="index-2.html">User Roles</a>
+                            <li><a href="{{route('roles.index')}}">User Roles</a>
                             </li>
                             <li><a href="index-3.html">User Permissions</a>
                             </li>
