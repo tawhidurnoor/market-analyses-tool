@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/roles', 'RolesController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
