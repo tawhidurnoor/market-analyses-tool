@@ -50,29 +50,37 @@
                         <p>It's just that simple. Turn your simple table into a sophisticated data table and offer your users a nice experience and great features without any effort.</p>
                     </div>
                     -->
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <div class="nk-int-st">
-                                    <input type="text" class="form-control input-sm" placeholder="Input Small">
-                                </div>
+                    @include('layouts.partials.messages')
+                    <br>
+                    <form action="{{route('roles.store')}}" method="post">
+                        @csrf
+
+                        <div class="form-group">
+                            <div class="nk-int-st">
+                                <input type="text" class="form-control" name="name" placeholder="Role Name" required>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <div class="nk-int-st">
-                                    <input type="text" class="form-control" placeholder="Input Default">
-                                </div>
+
+                        <div class="form-group">
+                            <label for="permissions">Permissions</label>
+                            @foreach($permissions as $permission)
+                            <div class="form-check">
+                                <input name="permissions[]" class="form-check-input" type="checkbox" value="{{$permission->name}}" id="chcekPermission{{$permission->id}}">
+                                <label class="form-check-label" for="chcekPermission{{$permission->id}}">
+                                    {{$permission->name}}
+                                </label>
+                            </div>
+                            @endforeach
+                        </div>
+
+                        <div class="form-group">
+                            <div class="nk-int-st">
+                                <button type="submit" class="btn btn-success notika-btn-success waves-effect">Add</button>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <div class="nk-int-st">
-                                    <input type="text" class="form-control input-lg" placeholder="Input Large">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    </form>
+
                 </div>
             </div>
         </div>

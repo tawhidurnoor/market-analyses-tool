@@ -26,7 +26,8 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('roles.create');
+        $permissions = Permission::all();
+        return view('roles.create', compact('permissions'));
     }
 
     /**
@@ -37,7 +38,23 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation Data
+        $request->validate([
+            'name' => 'required|max:100|unique:roles'
+        ], [
+            'name.requried' => 'Please give a role name'
+        ]);
+
+        // Process Data
+        $role = Role::create(['name' => $request->name]);
+
+        $permissions = $request->input('permissions');
+
+        if (!empty($permissions)) {
+            $role->syncPermissions($permissions);
+        }
+
+        return back();
     }
 
     /**
