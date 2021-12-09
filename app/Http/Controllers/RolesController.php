@@ -27,7 +27,11 @@ class RolesController extends Controller
     public function create()
     {
         $permissions = Permission::all();
-        return view('roles.create', compact('permissions'));
+        $permission_groups = Permission::select('group_name as name')
+            ->groupBy('group_name')
+            ->get();
+
+        return view('roles.create', compact('permissions', 'permission_groups'));
     }
 
     /**

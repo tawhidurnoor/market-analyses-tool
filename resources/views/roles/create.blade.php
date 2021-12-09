@@ -2,6 +2,11 @@
 
 @section('head')
 <title>Create User Role | Market Analysese Tool</title>
+<style>
+    .capitalize {
+        text-transform: capitalize;
+    }
+</style>
 @endsection
 
 @section('body')
@@ -50,6 +55,7 @@
                         <p>It's just that simple. Turn your simple table into a sophisticated data table and offer your users a nice experience and great features without any effort.</p>
                     </div>
                     -->
+
                     @include('layouts.partials.messages')
                     <br>
                     <form action="{{route('roles.store')}}" method="post">
@@ -64,22 +70,50 @@
                         <div class="form-group">
                             <label for="permissions">Permissions</label>
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkPermissionAll">
-                                <label class="form-check-label" for="checkPermissionAll">
-                                    Check All
-                                </label>
-                            </div>
-                            <hr>
+                            <div id="permissions" class="capitalize">
 
-                            @foreach($permissions as $permission)
-                            <div class="form-check">
-                                <input name="permissions[]" class="form-check-input" type="checkbox" value="{{$permission->name}}" id="checkPermission{{$permission->id}}">
-                                <label class="form-check-label" for="checkPermission{{$permission->id}}">
-                                    {{$permission->name}}
-                                </label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkPermissionAll">
+                                    <label class="form-check-label" for="checkPermissionAll">
+                                        Check All
+                                    </label>
+                                </div>
+
+                                <hr>
+
+                                @php $i = 1; @endphp
+                                @foreach ($permission_groups as $group)
+                                <div class="row">
+
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="{{$i}}Management" value="{{$group->name}}" onclick="checkPermissionByGroup('role-{{$i}}-management-checkbox', this)">
+                                            <label class="form-check-label" for="checkPermission">{{ $group->name }}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 role-{{ $i }}-management-checkbox">
+                                        @php
+                                        $permissions = App\User::getpermissionsByGroupName($group->name);
+                                        $j = 1;
+                                        @endphp
+                                        @foreach ($permissions as $permission)
+                                        <div class="form-check">
+                                            <input name="permissions[]" class="form-check-input" type="checkbox" value="{{$permission->name}}" id="checkPermission{{$permission->id}}">
+                                            <label class="form-check-label" for="checkPermission{{$permission->id}}">{{ $permission->name }}</label>
+                                        </div>
+                                        @php $j++; @endphp
+                                        @endforeach
+                                        <br>
+                                    </div>
+
+                                </div>
+                                @php $i++; @endphp
+                                @endforeach
+
                             </div>
-                            @endforeach
+
+
                         </div>
 
                         <div class="form-group">
@@ -113,5 +147,18 @@
             $('input[type=checkbox]').prop('checked', false);
         }
     });
+
+    /**
+     * Check specific group permissions
+     */
+    function checkPermissionByGroup(className, checkThis) {
+        const groupIdName = $("#" + checkThis.id);
+        const classCheckBox = $('.' + className + ' input');
+        if (groupIdName.is(':checked')) {
+            classCheckBox.prop('checked', true);
+        } else {
+            classCheckBox.prop('checked', false);
+        }
+    }
 </script>
 @endsection
