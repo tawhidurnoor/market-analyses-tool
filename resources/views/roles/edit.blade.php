@@ -86,19 +86,19 @@
                                 @php $i = 1; @endphp
                                 @foreach ($permission_groups as $group)
                                 <div class="row">
-
+                                    @php
+                                    $permissions = App\User::getpermissionsByGroupName($group->name);
+                                    $j = 1;
+                                    @endphp
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="{{$i}}Management" value="{{$group->name}}" onclick="checkPermissionByGroup('role-{{$i}}-management-checkbox', this)">
+                                            <input type="checkbox" class="form-check-input" id="{{$i}}Management" value="{{$group->name}}" onclick="checkPermissionByGroup('role-{{$i}}-management-checkbox', this)" {{ App\User::roleHasPermissions($role, $permissions) ? 'checked' : '' }}>
                                             <label class="form-check-label" for="checkPermission">{{ $group->name }}</label>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 role-{{ $i }}-management-checkbox">
-                                        @php
-                                        $permissions = App\User::getpermissionsByGroupName($group->name);
-                                        $j = 1;
-                                        @endphp
+
                                         @foreach ($permissions as $permission)
                                         <div class="form-check">
                                             <input name="permissions[]" class="form-check-input" type="checkbox" value="{{$permission->name}}" id="checkPermission{{$permission->id}}" {{$role->hasPermissionTo($permission->name) ? 'checked' : ''}}>
@@ -121,7 +121,7 @@
                         <div class="form-group">
                             <div class="nk-int-st">
                                 <button type="submit" class="btn btn-success notika-btn-success waves-effect">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i> Add
+                                    <i class="fa fa-pencil-square" aria-hidden="true"></i> Update
                                 </button>
                             </div>
                         </div>
