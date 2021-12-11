@@ -55,6 +55,10 @@
                         <p>It's just that simple. Turn your simple table into a sophisticated data table and offer your users a nice experience and great features without any effort.</p>
                     </div>
                     -->
+
+                    @include('layouts.partials.messages')
+                    <br>
+
                     <div class="table-responsive">
                         <table id="data-table-basic" class="table table-striped">
                             <thead>
