@@ -101,7 +101,7 @@
                                         @endphp
                                         @foreach ($permissions as $permission)
                                         <div class="form-check">
-                                            <input name="permissions[]" class="form-check-input" type="checkbox" value="{{$permission->name}}" id="checkPermission{{$permission->id}}">
+                                            <input name="permissions[]" class="form-check-input" type="checkbox" value="{{$permission->name}}" id="checkPermission{{$permission->id}}" onclick="checkSinglePermission('role-{{ $i }}-management-checkbox', '{{ $i }}Management', '{{ count($permissions) }}' )">
                                             <label class="form-check-label" for="checkPermission{{$permission->id}}">{{ $permission->name }}</label>
                                         </div>
                                         @php $j++; @endphp
