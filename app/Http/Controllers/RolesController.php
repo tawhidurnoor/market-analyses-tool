@@ -58,7 +58,10 @@ class RolesController extends Controller
             $role->syncPermissions($permissions);
         }
 
-        return back();
+        //return redirect()->route('roles.edit', [$role->id]);
+        session()->flash('success', 'Role added successfully!!');
+        return redirect()->route('roles.index');
+        //return back();
     }
 
     /**
@@ -108,10 +111,11 @@ class RolesController extends Controller
             $role->syncPermissions($permissions);
         }
 
+
         $role->name = $request->name;
         $role->save();
 
-        session()->flash('success', 'Role has been updated !!');
+        session()->flash('success', 'Role updated successfully!!');
         return back();
     }
 
@@ -129,7 +133,7 @@ class RolesController extends Controller
 
         $role->delete();
 
-        session()->flash('success', 'Role is deleted !!');
+        session()->flash('success', 'Role deleted successfully!!');
         return back();
     }
 }
