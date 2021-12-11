@@ -61,6 +61,7 @@
                                 <tr>
                                     <th>SL</th>
                                     <th>Role Name</th>
+                                    <th width="700px">Permissions</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -69,6 +70,13 @@
                                 <tr>
                                     <td> {{$loop->index+1}} </td>
                                     <td> {{$role->name}} </td>
+                                    <td>
+                                        @foreach ($role->permissions as $perm)
+                                        <span class="badge badge-success mr-1">
+                                            {{ $perm->name }}
+                                        </span>
+                                        @endforeach
+                                    </td>
                                     <td>
                                         <div class="btn-list">
                                             <a href="{{route('roles.edit', $role->id)}}" class="btn btn-info notika-btn-info waves-effect">
@@ -86,6 +94,7 @@
                                 <tr>
                                     <th>SL</th>
                                     <th>Role Name</th>
+                                    <th>Permissions</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
