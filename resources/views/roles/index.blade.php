@@ -30,7 +30,9 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                             <div class="breadcomb-report">
                                 <a href="{{route('roles.create')}}">
-                                    <button data-toggle="tooltip" data-placement="left" title="Add A Role" class="btn"><i class="notika-icon notika-checked"></i></button>
+                                    <button data-toggle="tooltip" data-placement="left" title="Add A Role" class="btn">
+                                        <i class="fa fa-plus-square" aria-hidden="true"></i> Add
+                                    </button>
                                 </a>
                             </div>
                         </div>
@@ -69,8 +71,12 @@
                                     <td> {{$role->name}} </td>
                                     <td>
                                         <div class="btn-list">
-                                            <button class="btn btn-info notika-btn-info waves-effect">Edit</button>
-                                            <button class="btn btn-danger notika-btn-danger waves-effect">Delete</button>
+                                            <a href="{{route('roles.edit', $role->id)}}" class="btn btn-info notika-btn-info waves-effect">
+                                                <i class="fa fa-pencil-square" aria-hidden="true"></i> Edit
+                                            </a>
+                                            <button class="btn btn-danger notika-btn-danger waves-effect">
+                                                <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>

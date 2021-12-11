@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -27,9 +28,7 @@ class RolesController extends Controller
     public function create()
     {
         $permissions = Permission::all();
-        $permission_groups = Permission::select('group_name as name')
-            ->groupBy('group_name')
-            ->get();
+        $permission_groups = User::getPermissionGroups();
 
         return view('roles.create', compact('permissions', 'permission_groups'));
     }
@@ -75,12 +74,15 @@ class RolesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        $permissions = Permission::all();
+        $permission_groups = User::getPermissionGroups();
+
+        return view('roles.edit', compact('role', 'permissions', 'permission_groups'));
     }
 
     /**

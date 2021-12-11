@@ -1,7 +1,7 @@
 @extends('layouts.full.mainlayout')
 
 @section('head')
-<title>Create User Role | Market Analysese Tool</title>
+<title>Edit User Role | Market Analysese Tool</title>
 <style>
     .capitalize {
         text-transform: capitalize;
@@ -24,8 +24,8 @@
                                     <i class="notika-icon notika-form"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Add User Role</h2>
-                                    <p>Add a new <span class="bread-ntd">User Role</span></p>
+                                    <h2 class="capitalize">Edit User Role : {{$role->name}}</h2>
+                                    <p>Edit <span class="bread-ntd">User Role</span></p>
                                 </div>
                             </div>
                         </div>
@@ -58,12 +58,12 @@
 
                     @include('layouts.partials.messages')
                     <br>
-                    <form action="{{route('roles.store')}}" method="post">
+                    <form action="{{route('roles.update', $role->id)}}" method="post">
                         @csrf
 
                         <div class="form-group">
                             <div class="nk-int-st">
-                                <input type="text" class="form-control" name="name" placeholder="Role Name" required>
+                                <input type="text" class="form-control" name="name" value="{{$role->name}}" placeholder="Role Name" required>
                             </div>
                         </div>
 
