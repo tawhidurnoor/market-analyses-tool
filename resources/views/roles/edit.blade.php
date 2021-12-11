@@ -60,7 +60,7 @@
                     <br>
                     <form action="{{route('roles.update', $role->id)}}" method="post">
                         @csrf
-
+                        @method('PUT')
                         <div class="form-group">
                             <div class="nk-int-st">
                                 <input type="text" class="form-control" name="name" value="{{$role->name}}" placeholder="Role Name" required>
@@ -75,7 +75,7 @@
                             <div id="permissions" class="capitalize">
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="checkPermissionAll">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkPermissionAll" {{ App\User::roleHasPermissions($role, $all_permissions) ? 'checked' : '' }}>
                                     <label class="form-check-label" for="checkPermissionAll">
                                         Check All
                                     </label>
@@ -101,7 +101,7 @@
 
                                         @foreach ($permissions as $permission)
                                         <div class="form-check">
-                                            <input name="permissions[]" class="form-check-input" type="checkbox" value="{{$permission->name}}" id="checkPermission{{$permission->id}}" {{$role->hasPermissionTo($permission->name) ? 'checked' : ''}}>
+                                            <input name="permissions[]" class="form-check-input" type="checkbox" value="{{$permission->name}}" id="checkPermission{{$permission->id}}" onclick="checkSinglePermission('role-{{ $i }}-management-checkbox', '{{ $i }}Management', '{{ count($permissions) }}' )" {{$role->hasPermissionTo($permission->name) ? 'checked' : ''}}>
                                             <label class="form-check-label" for="checkPermission{{$permission->id}}">{{ $permission->name }}</label>
                                         </div>
                                         @php $j++; @endphp

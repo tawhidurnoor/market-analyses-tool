@@ -79,22 +79,39 @@ class RolesController extends Controller
      */
     public function edit(Role $role)
     {
-        $permissions = Permission::all();
+        $all_permissions = Permission::all();
         $permission_groups = User::getPermissionGroups();
 
-        return view('roles.edit', compact('role', 'permissions', 'permission_groups'));
+        return view('roles.edit', compact('role', 'all_permissions', 'permission_groups'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        // Validation Data
+        $request->validate([
+            'name' => 'required|max:100|unique:roles,name,' . $role->id
+        ], [
+            'name.requried' => 'Please give a role name'
+        ]);
+
+        $permissions = $request->input('permissions');
+
+        if (!empty($permissions)) {
+            $role->syncPermissions($permissions);
+        }
+
+        $role->name = $request->name;
+        $role->save();
+
+        session()->flash('success', 'Role has been updated !!');
+        return back();
     }
 
     /**
