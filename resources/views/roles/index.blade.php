@@ -82,10 +82,9 @@
                                             <a href="{{route('roles.edit', $role->id)}}" class="btn btn-info notika-btn-info waves-effect">
                                                 <i class="fa fa-pencil-square" aria-hidden="true"></i> Edit
                                             </a>
-                                            <button class="btn btn-danger notika-btn-danger waves-effect">
+                                            <button class="btn btn-danger notika-btn-danger waves-effect delete-button" data-id="{{$role->id}}">
                                                 <i class="fa fa-trash" aria-hidden="true"></i> Delete
                                             </button>
-                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModaltwo">Modal Small</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -109,20 +108,24 @@
 <!-- Data Table area End-->
 
 
-<div class="modal fade" id="myModaltwo" role="dialog">
+<div class="modal fade" id="delete_modal" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body">
-                <h2>Delete Entry?</h2>
-                <p>Are you sure to delete this entry? This Process can't be undone.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
-            </div>
+            <form action="" method="post" id="delete_form">
+                @csrf
+                @method('DELETE')
+                <div class="modal-body">
+                    <h2>Delete Entry?</h2>
+                    <p>Are you sure to delete this entry? This Process can't be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -135,4 +138,15 @@
 <script src="{{asset('assets/js/data-table/jquery.dataTables.min.js')}}">
 </script>
 <script src="{{asset('assets/js/data-table/data-table-act.js')}}"></script>
+
+<script>
+    $(document).on('click', '.delete-button', function(e) {
+        e.preventDefault();
+        $('#delete_modal').modal('show');
+        var id = $(this).data('id');
+        //$('#del_id').val(id);
+        document.getElementById("delete_form").action = "roles/" + id;
+    });
+</script>
+
 @endsection
