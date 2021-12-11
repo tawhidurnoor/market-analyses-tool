@@ -72,7 +72,7 @@
                                     <td> {{$role->name}} </td>
                                     <td>
                                         @foreach ($role->permissions as $perm)
-                                        <span class="badge badge-success mr-1">
+                                        <span class="badge badge-info mr-1">
                                             {{ $perm->name }}
                                         </span>
                                         @endforeach
@@ -85,6 +85,7 @@
                                             <button class="btn btn-danger notika-btn-danger waves-effect">
                                                 <i class="fa fa-trash" aria-hidden="true"></i> Delete
                                             </button>
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModaltwo">Modal Small</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -106,6 +107,25 @@
     </div>
 </div>
 <!-- Data Table area End-->
+
+
+<div class="modal fade" id="myModaltwo" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h2>Delete Entry?</h2>
+                <p>Are you sure to delete this entry? This Process can't be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 
