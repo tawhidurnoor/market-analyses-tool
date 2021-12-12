@@ -18,9 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/roles', 'RolesController');
-
-Route::resource('/users', 'UserController');
+Route::group(
+    ['middleware' => ['auth']],
+    function () {
+        Route::resource('/roles', 'RolesController');
+        Route::resource('/users', 'UserController');
+    }
+);
 
 Auth::routes();
 

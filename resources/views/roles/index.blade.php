@@ -83,9 +83,12 @@
                                     </td>
                                     <td>
                                         <div class="btn-list">
+
+                                            @if(Auth::user()->can('role.edit'))
                                             <a href="{{route('roles.edit', $role->id)}}" class="btn btn-info notika-btn-info waves-effect">
                                                 <i class="fa fa-pencil-square" aria-hidden="true"></i> Edit
                                             </a>
+                                            @endif
                                             <button class="btn btn-danger notika-btn-danger waves-effect delete-button" data-id="{{$role->id}}">
                                                 <i class="fa fa-trash" aria-hidden="true"></i> Delete
                                             </button>
