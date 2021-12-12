@@ -152,7 +152,7 @@
         $('#delete_modal').modal('show');
         var id = $(this).data('id');
         //$('#del_id').val(id);
-        document.getElementById("delete_form").action = "roles/" + id;
+        document.getElementById("delete_form").action = "users/" + id;
     });
 </script>
 
