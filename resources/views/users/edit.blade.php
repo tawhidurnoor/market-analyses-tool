@@ -54,9 +54,9 @@
 
                     @include('layouts.partials.messages')
                     <br>
-                    <form action="{{route('users.store')}}" method="post">
+                    <form action="{{route('users.update', $user->id)}}" method="post">
                         @csrf
-
+                        @method('PUT')
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
@@ -78,14 +78,14 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <div class="nk-int-st">
-                                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                                        <input type="password" name="password" class="form-control" placeholder="Password">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <div class="nk-int-st">
-                                        <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
+                                        <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                         <div class="form-group">
                             <div class="nk-int-st">
                                 <button type="submit" class="btn btn-success notika-btn-success waves-effect">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i> Add
+                                    <i class="fa fa-plus-square" aria-hidden="true"></i> Update
                                 </button>
                             </div>
                         </div>
