@@ -64,8 +64,9 @@
                             <thead>
                                 <tr>
                                     <th>SL</th>
-                                    <th>Role Name</th>
+                                    <th>User Name</th>
                                     <th>Email</th>
+                                    <th>Roles</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -75,6 +76,13 @@
                                     <td> {{$loop->index+1}} </td>
                                     <td> {{$user->name}} </td>
                                     <td> {{$user->email}} </td>
+                                    <td>
+                                        @foreach ($user->roles as $role)
+                                        <span class="badge badge-info">
+                                            {{ $role->name }}
+                                        </span>
+                                        @endforeach
+                                    </td>
                                     <td>
                                         <div class="btn-list">
                                             <a href="{{route('users.edit', $user->id)}}" class="btn btn-info notika-btn-info waves-effect">
@@ -91,8 +99,9 @@
                             <tfoot>
                                 <tr>
                                     <th>SL</th>
-                                    <th>Role Name</th>
+                                    <th>User Name</th>
                                     <th>Email</th>
+                                    <th>Roles</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
