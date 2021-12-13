@@ -105,9 +105,19 @@ class ProductCategoryController extends Controller
      */
     public function destroy(ProductCategory $category)
     {
-        $category->delete();
+        $subcat_counter = ProductSubcategory::where('category_id', $category->id)->count();
+        if ($subcat_counter > 0) {
+            if ($subcat_counter == 1) {
+                session()->flash('warning', 'Can not delete, ' . $category->category_name  . ' has 1 subcategory!');
+            } else {
+                session()->flash('warning', 'Can not delete, ' . $category->category_name  . ' has ' . $subcat_counter . ' subcategories!');
+            }
+            return redirect()->back();
+        } else {
+            $category->delete();
 
-        session()->flash('success', 'Product Category deleted successfully!');
-        return redirect()->back();
+            session()->flash('success', 'Product Category deleted successfully!');
+            return redirect()->back();
+        }
     }
 }

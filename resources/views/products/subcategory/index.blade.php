@@ -1,7 +1,11 @@
 @extends('layouts.full.mainlayout')
 
 @section('head')
-<title>Product Categories | Market Analysese Tool</title>
+<title>Product Subcategories | Market Analysese Tool</title>
+
+<!-- bootstrap select CSS
+		============================================ -->
+<link rel="stylesheet" href="{{asset('assets/css/bootstrap-select/bootstrap-select.css')}}">
 @endsection
 
 <!-- Data Table CSS
@@ -19,7 +23,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
-                                    <i class="fa fa-th-list" aria-hidden="true"></i>
+                                    <i class="fa fa-list" aria-hidden="true"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Subcategories of {{$category->category_name}} </h2>
@@ -29,7 +33,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                             <div class="breadcomb-report">
-                                <button data-toggle="modal" data-target="#add_modal" data-placement="left" title="Add A Category" class="btn">
+                                <button data-toggle="modal" data-target="#add_modal" data-placement="left" title="Add A Subcategory" class="btn">
                                     <i class="fa fa-plus-square" aria-hidden="true"></i> Add
                                 </button>
                             </div>
@@ -73,9 +77,6 @@
                                     <td> {{$prod_subcat->subcategory_name}} </td>
                                     <td>
                                         <div class="btn-list">
-                                            <a href="{{route('category.edit', $prod_subcat->id)}}" class="btn btn-info notika-btn-primary waves-effect">
-                                                <i class="fa fa-list" aria-hidden="true"></i> View Subcategories
-                                            </a>
                                             <button class="btn btn-info notika-btn-info waves-effect edit-button" data-id="{{$prod_subcat->id}}">
                                                 <i class="fa fa-pencil-square" aria-hidden="true"></i> Edit
                                             </button>
@@ -96,11 +97,14 @@
                             </tfoot>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 <!-- Data Table area End-->
 
 <!-- Add Modal -->
@@ -142,11 +146,26 @@
                 @method('PUT')
                 <div class="modal-body">
                     <h2>Add a Product Category</h2>
+
                     <div class="form-group">
                         <div class="nk-int-st">
-                            <input type="text" name="category_name" id="category_name" class="form-control" placeholder="Category Name" required>
+                            <input type="text" name="subcategory_name" id="subcategory_name" class="form-control" placeholder="Subcategory Name" required>
                         </div>
                     </div>
+
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <div class="bootstrap-select fm-cmp-mg">
+                            <select name="category_id" class="categories" data-live-search="true">
+                                @foreach($categories as $cat)
+                                <option value="{{$cat->id}}">{{$cat->category_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -185,11 +204,17 @@
 @section('scripts')
 <!-- Data Table JS
 		============================================ -->
-<script src="{{asset('assets/js/data-table/jquery.dataTables.min.js')}}">
-</script>
+<script src="{{asset('assets/js/data-table/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('assets/js/data-table/data-table-act.js')}}"></script>
 
+<!-- bootstrap select JS
+		============================================ -->
+<script src="{{asset('assets/js/bootstrap-select/bootstrap-select.js')}}"></script>
+
 <script>
+    // To style only selects with the my-select class
+    $('.categories').selectpicker();
+
     $(function() {
         $(document).on('click', '.edit-button', function(e) {
             e.preventDefault();
@@ -211,14 +236,15 @@
     function getEditDetails(id) {
         $.ajax({
             type: 'GET',
-            url: '../products/category/' + id,
+            url: '../../../products/subcategory/' + id,
             dataType: 'json',
             success: function(response) {
-                $('#category_name').val(response.category_name);
+                $('#subcategory_name').val(response.subcategory_name);
+                $('.categories').selectpicker('val', response.category_id);
             }
         });
 
-        document.getElementById("edit_form").action = "../products/category/" + id;
+        document.getElementById("edit_form").action = "../../../products/subcategory/" + id;
     }
 </script>
 

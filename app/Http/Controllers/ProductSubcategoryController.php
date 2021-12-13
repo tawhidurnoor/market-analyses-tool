@@ -35,7 +35,18 @@ class ProductSubcategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation Data
+        $request->validate([
+            'subcategory_name' => 'required|unique:product_subcategories',
+        ]);
+
+        $subcategory = new ProductSubcategory();
+        $subcategory->category_id = $request->category_id;
+        $subcategory->subcategory_name = $request->subcategory_name;
+        $subcategory->save();
+
+        session()->flash('success', 'Product Subcategory stored successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -44,9 +55,9 @@ class ProductSubcategoryController extends Controller
      * @param  \App\ProductSubcategory  $productSubcategory
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductSubcategory $productSubcategory)
+    public function show(ProductSubcategory $subcategory)
     {
-        //
+        return $subcategory;
     }
 
     /**
@@ -67,9 +78,22 @@ class ProductSubcategoryController extends Controller
      * @param  \App\ProductSubcategory  $productSubcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductSubcategory $productSubcategory)
+    public function update(Request $request, ProductSubcategory $subcategory)
     {
-        //
+        // Validation Data
+        $request->validate([
+            'subcategory_name' => 'required|unique:product_subcategories,subcategory_name,' . $subcategory->id,
+        ]);
+
+        $subcategory->category_id = $request->category_id;
+        $subcategory->subcategory_name = $request->subcategory_name;
+        $subcategory->save();
+
+        session()->flash(
+            'success',
+            'Product Subcategory updated successfully!'
+        );
+        return redirect()->back();
     }
 
     /**

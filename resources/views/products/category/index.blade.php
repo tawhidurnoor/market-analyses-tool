@@ -73,7 +73,7 @@
                                     <td> {{$prod_cat->category_name}} </td>
                                     <td>
                                         <div class="btn-list">
-                                            <a href="{{route('category.edit', $prod_cat->id)}}" class="btn btn-info notika-btn-primary waves-effect">
+                                            <a href="{{route('category.edit', $prod_cat->id)}}" class="btn btn-primary notika-btn-primary waves-effect">
                                                 <i class="fa fa-list" aria-hidden="true"></i> View Subcategories
                                             </a>
                                             <button class="btn btn-info notika-btn-info waves-effect edit-button" data-id="{{$prod_cat->id}}">
