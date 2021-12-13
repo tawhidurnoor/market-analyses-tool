@@ -22,8 +22,8 @@
                                     <i class="fa fa-th-list" aria-hidden="true"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Product Categories</h2>
-                                    <p>Manage all <span class="bread-ntd">Product Categories</span></p>
+                                    <h2>Subcategories of {{$category->category_name}} </h2>
+                                    <p>Manage all subcategories of <span class="bread-ntd">{{$category->category_name}}</span></p>
                                 </div>
                             </div>
                         </div>
@@ -67,19 +67,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($product_categories as $prod_cat)
+                                @foreach($product_subcategories as $prod_subcat)
                                 <tr>
                                     <td> {{$loop->index+1}} </td>
-                                    <td> {{$prod_cat->category_name}} </td>
+                                    <td> {{$prod_subcat->subcategory_name}} </td>
                                     <td>
                                         <div class="btn-list">
-                                            <a href="{{route('category.edit', $prod_cat->id)}}" class="btn btn-info notika-btn-primary waves-effect">
+                                            <a href="{{route('category.edit', $prod_subcat->id)}}" class="btn btn-info notika-btn-primary waves-effect">
                                                 <i class="fa fa-list" aria-hidden="true"></i> View Subcategories
                                             </a>
-                                            <button class="btn btn-info notika-btn-info waves-effect edit-button" data-id="{{$prod_cat->id}}">
+                                            <button class="btn btn-info notika-btn-info waves-effect edit-button" data-id="{{$prod_subcat->id}}">
                                                 <i class="fa fa-pencil-square" aria-hidden="true"></i> Edit
                                             </button>
-                                            <button class="btn btn-danger notika-btn-danger waves-effect delete-button" data-id="{{$prod_cat->id}}">
+                                            <button class="btn btn-danger notika-btn-danger waves-effect delete-button" data-id="{{$prod_subcat->id}}">
                                                 <i class="fa fa-trash" aria-hidden="true"></i> Delete
                                             </button>
                                         </div>
@@ -110,13 +110,14 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <form action="{{route('category.store')}}" method="post">
+            <form action="{{route('subcategory.store')}}" method="post">
                 @csrf
+                <input type="hidden" name="category_id" value="{{$category->id}}">
                 <div class="modal-body">
-                    <h2>Add a Product Category</h2>
+                    <h2>Add a Subcategory of {{$category->category_name}}</h2>
                     <div class="form-group">
                         <div class="nk-int-st">
-                            <input type="text" name="category_name" class="form-control" placeholder="Category Name" required>
+                            <input type="text" name="subcategory_name" class="form-control" placeholder="Subcategory Name" required>
                         </div>
                     </div>
                 </div>

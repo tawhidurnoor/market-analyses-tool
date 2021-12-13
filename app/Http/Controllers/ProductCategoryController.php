@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ProductCategory;
+use App\ProductSubcategory;
 use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
@@ -66,9 +67,13 @@ class ProductCategoryController extends Controller
      * @param  \App\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductCategory $productCategory)
+    public function edit(ProductCategory $category)
     {
-        //
+        $product_subcategories = ProductSubcategory::where('category_id', $category->id)
+            ->get();
+        $categories = ProductCategory::all();
+
+        return view('products.subcategory.index', compact('category', 'product_subcategories', 'categories'));
     }
 
     /**
