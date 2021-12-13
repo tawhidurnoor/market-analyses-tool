@@ -107,7 +107,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <form action="{{route('category.store')}}" method="post" id="delete_form">
+            <form action="{{route('category.store')}}" method="post">
                 @csrf
                 <div class="modal-body">
                     <h2>Add a Product Category</h2>
@@ -199,7 +199,8 @@
             $('#delete_modal').modal('show');
             var id = $(this).data('id');
             //$('#del_id').val(id);
-            document.getElementById("delete_form").action = "users/" + id;
+            console.log(id);
+            document.getElementById("delete_form").action = "../products/category/" + id;
         });
     });
 

@@ -88,8 +88,11 @@ class ProductCategoryController extends Controller
      * @param  \App\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductCategory $productCategory)
+    public function destroy(ProductCategory $category)
     {
-        //
+        $category->delete();
+
+        session()->flash('success', 'Product Category deleted successfully!');
+        return redirect()->back();
     }
 }
