@@ -73,9 +73,13 @@ class ProductCategoryController extends Controller
      * @param  \App\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductCategory $productCategory)
+    public function update(Request $request, ProductCategory $category)
     {
-        //
+        $category->category_name = $request->category_name;
+        $category->save();
+
+        session()->flash('success', 'Product Category updated successfully!');
+        return redirect()->back();
     }
 
     /**
