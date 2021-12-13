@@ -17,6 +17,14 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li><a data-toggle="collapse" data-target="#demoevent" href="#">Product Management</a>
+                                <ul id="demoevent" class="collapse dropdown-header-top">
+                                    <li><a href="{{route('category.index')}}">Product Category</a>
+                                    </li>
+                                    <li><a href="{{route('roles.index')}}">Product List</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -61,8 +69,6 @@
                     <div id="productManagement" class="tab-pane {{ ( request()->segment(1)=='products' ) ? 'active':'' }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="{{route('category.index')}}">Product Category</a>
-                            </li>
-                            <li><a href="{{route('roles.index')}}">Product Subcategory</a>
                             </li>
                             <li><a href="{{route('roles.index')}}">Product List</a>
                             </li>
