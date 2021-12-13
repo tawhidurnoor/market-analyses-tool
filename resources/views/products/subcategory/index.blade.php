@@ -145,7 +145,7 @@
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
-                    <h2>Add a Product Category</h2>
+                    <h2>Edit Product Subcategory</h2>
 
                     <div class="form-group">
                         <div class="nk-int-st">
@@ -229,7 +229,7 @@
             var id = $(this).data('id');
             //$('#del_id').val(id);
             console.log(id);
-            document.getElementById("delete_form").action = "../products/category/" + id;
+            document.getElementById("delete_form").action = "../../../products/subcategory/" + id;
         });
     });
 

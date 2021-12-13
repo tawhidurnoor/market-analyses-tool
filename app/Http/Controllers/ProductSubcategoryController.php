@@ -102,8 +102,11 @@ class ProductSubcategoryController extends Controller
      * @param  \App\ProductSubcategory  $productSubcategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductSubcategory $productSubcategory)
+    public function destroy(ProductSubcategory $subcategory)
     {
-        //
+        $subcategory->delete();
+
+        session()->flash('success', 'Product Subcategory deleted successfully!');
+        return redirect()->back();
     }
 }
