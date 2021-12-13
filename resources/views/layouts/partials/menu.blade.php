@@ -39,10 +39,16 @@
                     <li class="{{ ( request()->segment(1)=='roles' || request()->segment(1)=='users' ) ? 'active':'' }}">
                         <a data-toggle="tab" href="#userManagement"><i class="notika-icon notika-support"></i> User Management</a>
                     </li>
+
+                    <li class="{{ ( request()->segment(1)=='products' ) ? 'active':'' }}">
+                        <a data-toggle="tab" href="#productManagement"><i class="fa fa-cube" aria-hidden="true"></i> Products</a>
+                    </li>
+
                 </ul>
 
                 <!-- Bellow gose the nested item of any tab, will be copied from tempete file if needed -->
                 <div class="tab-content custom-menu-content">
+
                     <div id="userManagement" class="tab-pane {{ ( request()->segment(1)=='roles' || request()->segment(1)=='users' ) ? 'active':'' }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="{{route('users.index')}}">Users</a>
@@ -51,6 +57,18 @@
                             </li>
                         </ul>
                     </div>
+
+                    <div id="productManagement" class="tab-pane {{ ( request()->segment(1)=='products' ) ? 'active':'' }} notika-tab-menu-bg animated flipInX">
+                        <ul class="notika-main-menu-dropdown">
+                            <li><a href="{{route('category.index')}}">Product Category</a>
+                            </li>
+                            <li><a href="{{route('roles.index')}}">Product Subcategory</a>
+                            </li>
+                            <li><a href="{{route('roles.index')}}">Product List</a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
 
             </div>

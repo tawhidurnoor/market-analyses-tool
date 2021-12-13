@@ -23,6 +23,10 @@ Route::group(
     function () {
         Route::resource('/roles', 'RolesController');
         Route::resource('/users', 'UserController');
+
+        Route::prefix('products')->group(function () {
+            Route::resource('/category', 'ProductCategoryController');
+        });
     }
 );
 

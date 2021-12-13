@@ -14,7 +14,8 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $product_categories = ProductCategory::all();
+        return view('products.category.index', compact('product_categories'));
     }
 
     /**
@@ -35,7 +36,12 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new ProductCategory();
+        $category->category_name = $request->category_name;
+        $category->save();
+
+        session()->flash('success', 'Product Category stored successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -44,9 +50,9 @@ class ProductCategoryController extends Controller
      * @param  \App\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductCategory $productCategory)
+    public function show(ProductCategory $category)
     {
-        //
+        return $category;
     }
 
     /**
