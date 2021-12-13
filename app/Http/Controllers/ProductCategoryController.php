@@ -36,6 +36,11 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // Validation Data
+        $request->validate([
+            'category_name' => 'required|unique:product_categories',
+        ]);
+
         $category = new ProductCategory();
         $category->category_name = $request->category_name;
         $category->save();
@@ -75,6 +80,11 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, ProductCategory $category)
     {
+        // Validation Data
+        $request->validate([
+            'category_name' => 'required|unique:product_categories,category_name,' . $category->id,
+        ]);
+
         $category->category_name = $request->category_name;
         $category->save();
 
