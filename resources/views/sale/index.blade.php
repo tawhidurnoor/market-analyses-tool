@@ -276,7 +276,7 @@
             $('#delete_modal').modal('show');
             var id = $(this).data('id');
             //$('#del_id').val(id);
-            document.getElementById("delete_form").action = "../../../products/product/" + id;
+            document.getElementById("delete_form").action = "../sale/" + id;
         });
     });
 

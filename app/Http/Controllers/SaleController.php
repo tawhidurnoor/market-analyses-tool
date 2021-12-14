@@ -107,6 +107,9 @@ class SaleController extends Controller
      */
     public function destroy(Sale $sale)
     {
-        //
+        $sale->delete();
+
+        session()->flash('success', 'Sale deleted successfully!');
+        return redirect()->back();
     }
 }
