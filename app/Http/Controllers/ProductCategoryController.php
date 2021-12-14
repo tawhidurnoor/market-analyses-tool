@@ -108,9 +108,9 @@ class ProductCategoryController extends Controller
         $subcat_counter = ProductSubcategory::where('category_id', $category->id)->count();
         if ($subcat_counter > 0) {
             if ($subcat_counter == 1) {
-                session()->flash('warning', 'Can not delete, ' . $category->category_name  . ' has 1 subcategory!');
+                session()->flash('warning', 'You can not delete, ' . $category->category_name  . '! It has 1 subcategory.');
             } else {
-                session()->flash('warning', 'Can not delete, ' . $category->category_name  . ' has ' . $subcat_counter . ' subcategories!');
+                session()->flash('warning', 'You can not delete, ' . $category->category_name  . '! It has ' . $subcat_counter . ' subcategories.');
             }
             return redirect()->back();
         } else {

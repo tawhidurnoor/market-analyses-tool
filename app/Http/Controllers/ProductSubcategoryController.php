@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\ProductSubcategory;
 use Illuminate\Http\Request;
 
@@ -104,9 +105,20 @@ class ProductSubcategoryController extends Controller
      */
     public function destroy(ProductSubcategory $subcategory)
     {
-        $subcategory->delete();
+        $product_counter = Product::where('product_subcat_id', $subcategory->id)->count();
+        if ($product_counter > 0) {
+            if ($product_counter == 1) {
+                session()->flash('warning', 'You can not delete ' . $subcategory->subcategory_name . '! It has 1 product.');
+                return redirect()->back();
+            } else {
+                session()->flash('warning', 'You can not delete ' . $subcategory->subcategory_name . '! It has ' . $product_counter . ' products.');
+                return redirect()->back();
+            }
+        } else {
+            $subcategory->delete();
 
-        session()->flash('success', 'Product Subcategory deleted successfully!');
-        return redirect()->back();
+            session()->flash('success', 'Product Subcategory deleted successfully!');
+            return redirect()->back();
+        }
     }
 }
