@@ -66,7 +66,7 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        //
+        return $sale;
     }
 
     /**
@@ -89,7 +89,14 @@ class SaleController extends Controller
      */
     public function update(Request $request, Sale $sale)
     {
-        //
+        $sale->product_id = $request->product_id;
+        $sale->city_id = $request->city_id;
+        $sale->sale_ammount = $request->sale_ammount;
+
+        $sale->save();
+
+        session()->flash('success', 'Sale updated successfully!');
+        return redirect()->back();
     }
 
     /**

@@ -184,7 +184,7 @@
 
                     <div class="form-group">
                         <div class="bootstrap-select fm-cmp-mg">
-                            <select name="product_id" class="products" data-live-search="true" required>
+                            <select name="product_id" class="product_id_edit" data-live-search="true" required>
                                 <option value="">Select Product</option>
                                 @foreach($products as $prods)
                                 <option value="{{$prods->id}}">{{$prods->product_name }}</option>
@@ -195,7 +195,7 @@
 
                     <div class="form-group">
                         <div class="bootstrap-select fm-cmp-mg">
-                            <select name="city_id" class="cities" data-live-search="true" required>
+                            <select name="city_id" class="city_id_edit" data-live-search="true" required>
                                 <option value="">Select City</option>
                                 @foreach($cities as $city)
                                 <option value="{{$city->id}}">{{$city->city_name }}</option>
@@ -206,7 +206,7 @@
 
                     <div class="form-group">
                         <div class="nk-int-st">
-                            <input type="number" step="any" name="sale_ammount" class="form-control" placeholder="Sale Ammount" required>
+                            <input type="number" step="any" name="sale_ammount" id="sale_ammount_edit" class="form-control" placeholder="Sale Ammount" required>
                         </div>
                     </div>
 
@@ -260,6 +260,9 @@
     $('.products').selectpicker();
     $('.cities').selectpicker();
 
+    $('.product_id_edit').selectpicker();
+    $('.city_id_edit').selectpicker();
+
     $(function() {
         $(document).on('click', '.edit-button', function(e) {
             e.preventDefault();
@@ -280,16 +283,16 @@
     function getEditDetails(id) {
         $.ajax({
             type: 'GET',
-            url: '../../../products/product/' + id,
+            url: '../sale/' + id,
             dataType: 'json',
             success: function(response) {
-                $('#product_name').val(response.product_name);
-                $('.sub_categories_edit').selectpicker('val', response.product_subcat_id);
-                $('#mrp').val(response.mrp);
+                $('.product_id_edit').selectpicker('val', response.product_id);
+                $('.city_id_edit').selectpicker('val', response.city_id);
+                $('#sale_ammount_edit').val(response.sale_ammount);
             }
         });
 
-        document.getElementById("edit_form").action = "../../../products/product/" + id;
+        document.getElementById("edit_form").action = "../sale/" + id;
     }
 </script>
 
