@@ -41,15 +41,19 @@
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
 
                     <li class="{{ ( request()->segment(1)=='' ) ? 'active':'' }}"> <a href="/">
-                            <i class="notika-icon notika-house"></i> Home</a>
+                            <i class="fa fa-tachometer" aria-hidden="true"></i> Home</a>
                     </li>
 
                     <li class="{{ ( request()->segment(1)=='roles' || request()->segment(1)=='users' ) ? 'active':'' }}">
-                        <a data-toggle="tab" href="#userManagement"><i class="notika-icon notika-support"></i> User Management</a>
+                        <a data-toggle="tab" href="#userManagement"><i class="fa fa-users" aria-hidden="true"></i> User Management</a>
                     </li>
 
                     <li class="{{ ( request()->segment(1)=='products' ) ? 'active':'' }}">
                         <a data-toggle="tab" href="#productManagement"><i class="fa fa-cube" aria-hidden="true"></i> Products</a>
+                    </li>
+
+                    <li class="{{ ( request()->segment(1)=='sale' ) ? 'active':'' }}"> <a href="{{route('sale.index')}}">
+                            <i class="fa fa-money" aria-hidden="true"></i> Sale</a>
                     </li>
 
                 </ul>

@@ -29,6 +29,8 @@ Route::group(
             Route::resource('/subcategory', 'ProductSubcategoryController');
             Route::resource('/product', 'ProductController');
         });
+
+        Route::resource('/sale', 'SaleController');
     }
 );
 
