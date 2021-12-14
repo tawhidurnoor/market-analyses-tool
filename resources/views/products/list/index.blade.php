@@ -124,11 +124,13 @@
                 @csrf
                 <div class="modal-body">
                     <h2>Add a Product</h2>
+
                     <div class="form-group">
                         <div class="nk-int-st">
                             <input type="text" name="product_name" class="form-control" placeholder="Product Name" required>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <!-- <label>Category</label> -->
                         <div class="bootstrap-select fm-cmp-mg">
@@ -140,11 +142,13 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="nk-int-st">
                             <input type="number" step="any" name="mrp" class="form-control" placeholder="MRP" required>
                         </div>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -170,22 +174,27 @@
 
                     <div class="form-group">
                         <div class="nk-int-st">
-                            <input type="text" name="subcategory_name" id="subcategory_name" class="form-control" placeholder="Subcategory Name" required>
+                            <input type="text" name="product_name" id="product_name" class="form-control" placeholder="Product Name" required>
                         </div>
                     </div>
-
 
                     <div class="form-group">
                         <!-- <label>Category</label> -->
                         <div class="bootstrap-select fm-cmp-mg">
-                            <select name="category_id" class="categories" data-live-search="true">
-                                @foreach($subcategories as $sub_cat)
+                            <select name="product_subcat_id" class="sub_categories_edit" data-live-search="true" required>
+                                <option value="">Select Subcategory</option>
+                                @foreach($subcategories2 as $sub_cat)
                                 <option value="{{$sub_cat->id}}">{{$sub_cat->subcategory_name }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-                    <br>
+
+                    <div class="form-group">
+                        <div class="nk-int-st">
+                            <input type="number" step="any" name="mrp" id="mrp" class="form-control" placeholder="MRP" required>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
@@ -235,6 +244,7 @@
 <script>
     // To style only selects with the my-select class
     $('.sub_categories').selectpicker();
+    $('.sub_categories_edit').selectpicker();
 
     $(function() {
         $(document).on('click', '.edit-button', function(e) {
@@ -257,15 +267,16 @@
     function getEditDetails(id) {
         $.ajax({
             type: 'GET',
-            url: '../../../products/subcategory/' + id,
+            url: '../../../products/product/' + id,
             dataType: 'json',
             success: function(response) {
-                $('#subcategory_name').val(response.subcategory_name);
-                $('.categories').selectpicker('val', response.category_id);
+                $('#product_name').val(response.product_name);
+                $('.sub_categories_edit').selectpicker('val', response.product_subcat_id);
+                $('#mrp').val(response.mrp);
             }
         });
 
-        document.getElementById("edit_form").action = "../../../products/subcategory/" + id;
+        document.getElementById("edit_form").action = "../../../products/product/" + id;
     }
 </script>
 
