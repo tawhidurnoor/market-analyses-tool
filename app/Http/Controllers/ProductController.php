@@ -18,8 +18,8 @@ class ProductController extends Controller
         $products = Product::join('product_subcategories', 'products.product_subcat_id', 'product_subcategories.id')
             ->selectRaw('products.*, product_subcategories.subcategory_name as subcategory_name')
             ->get();
-        $subcategories = $subcategories2 = ProductSubcategory::all();
-        return view('products.list.index', compact('products', 'subcategories', 'subcategories2'));
+        $subcategories = ProductSubcategory::all();
+        return view('products.list.index', compact('products', 'subcategories'));
     }
 
     /**
@@ -100,6 +100,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        session()->flash('success', 'Product deleted successfully!');
+        return redirect()->back();
     }
 }

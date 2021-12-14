@@ -183,7 +183,7 @@
                         <div class="bootstrap-select fm-cmp-mg">
                             <select name="product_subcat_id" class="sub_categories_edit" data-live-search="true" required>
                                 <option value="">Select Subcategory</option>
-                                @foreach($subcategories2 as $sub_cat)
+                                @foreach($subcategories as $sub_cat)
                                 <option value="{{$sub_cat->id}}">{{$sub_cat->subcategory_name }}</option>
                                 @endforeach
                             </select>
@@ -259,8 +259,7 @@
             $('#delete_modal').modal('show');
             var id = $(this).data('id');
             //$('#del_id').val(id);
-            console.log(id);
-            document.getElementById("delete_form").action = "../../../products/subcategory/" + id;
+            document.getElementById("delete_form").action = "../../../products/product/" + id;
         });
     });
 
