@@ -21,7 +21,7 @@
                                 <ul id="demoevent" class="collapse dropdown-header-top">
                                     <li><a href="{{route('category.index')}}">Product Category</a>
                                     </li>
-                                    <li><a href="{{route('roles.index')}}">Product List</a>
+                                    <li><a href="{{route('product.index')}}">Product List</a>
                                     </li>
                                 </ul>
                             </li>
@@ -70,7 +70,7 @@
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="{{route('category.index')}}">Product Category</a>
                             </li>
-                            <li><a href="{{route('roles.index')}}">Product List</a>
+                            <li><a href="{{route('product.index')}}">Product List</a>
                             </li>
                         </ul>
                     </div>

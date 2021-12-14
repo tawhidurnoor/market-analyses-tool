@@ -1,7 +1,7 @@
 @extends('layouts.full.mainlayout')
 
 @section('head')
-<title>Product Subcategories | Market Analysese Tool</title>
+<title>Product List | Market Analysese Tool</title>
 
 <!-- bootstrap select CSS
 		============================================ -->
@@ -23,11 +23,11 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
-                                    <i class="fa fa-list" aria-hidden="true"></i>
+                                    <i class="fa fa-cube" aria-hidden="true"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Subcategories of {{$category->category_name}} </h2>
-                                    <p>Manage all subcategories of <span class="bread-ntd">{{$category->category_name}}</span></p>
+                                    <h2>List of all Products </h2>
+                                    <p>Manage all <span class="bread-ntd">Products</span></p>
                                 </div>
                             </div>
                         </div>
@@ -66,21 +66,25 @@
                             <thead>
                                 <tr>
                                     <th>SL</th>
-                                    <th>Category Name</th>
+                                    <th>Product Name</th>
+                                    <th>Product Subcategory</th>
+                                    <th>MRP</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($product_subcategories as $prod_subcat)
+                                @foreach($products as $product)
                                 <tr>
                                     <td> {{$loop->index+1}} </td>
-                                    <td> {{$prod_subcat->subcategory_name}} </td>
+                                    <td> {{$product->product_name}} </td>
+                                    <td> {{$product->subcategory_name}} </td>
+                                    <td> {{$product->mrp}} </td>
                                     <td>
                                         <div class="btn-list">
-                                            <button class="btn btn-info notika-btn-info waves-effect edit-button" data-id="{{$prod_subcat->id}}">
+                                            <button class="btn btn-info notika-btn-info waves-effect edit-button" data-id="{{$product->id}}">
                                                 <i class="fa fa-pencil-square" aria-hidden="true"></i> Edit
                                             </button>
-                                            <button class="btn btn-danger notika-btn-danger waves-effect delete-button" data-id="{{$prod_subcat->id}}">
+                                            <button class="btn btn-danger notika-btn-danger waves-effect delete-button" data-id="{{$product->id}}">
                                                 <i class="fa fa-trash" aria-hidden="true"></i> Delete
                                             </button>
                                         </div>
@@ -91,7 +95,9 @@
                             <tfoot>
                                 <tr>
                                     <th>SL</th>
-                                    <th>Category Name</th>
+                                    <th>Product Name</th>
+                                    <th>Product Subcategory</th>
+                                    <th>MRP</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
@@ -114,14 +120,29 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <form action="{{route('subcategory.store')}}" method="post">
+            <form action="{{route('product.store')}}" method="post">
                 @csrf
-                <input type="hidden" name="category_id" value="{{$category->id}}">
                 <div class="modal-body">
-                    <h2>Add a Subcategory of {{$category->category_name}}</h2>
+                    <h2>Add a Product</h2>
                     <div class="form-group">
                         <div class="nk-int-st">
-                            <input type="text" name="subcategory_name" class="form-control" placeholder="Subcategory Name" required>
+                            <input type="text" name="product_name" class="form-control" placeholder="Product Name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label>Category</label> -->
+                        <div class="bootstrap-select fm-cmp-mg">
+                            <select name="product_subcat_id" class="sub_categories" data-live-search="true" required>
+                                <option value="">Select Subcategory</option>
+                                @foreach($subcategories as $sub_cat)
+                                <option value="{{$sub_cat->id}}">{{$sub_cat->subcategory_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="nk-int-st">
+                            <input type="number" step="any" name="mrp" class="form-control" placeholder="MRP" required>
                         </div>
                     </div>
                 </div>
@@ -155,12 +176,11 @@
 
 
                     <div class="form-group">
-                        <label>Category</label>
+                        <!-- <label>Category</label> -->
                         <div class="bootstrap-select fm-cmp-mg">
-                            <select name="category_id" class="categories" data-live-search="true" required>
-                                <option value="">Cubcategory</option>
-                                @foreach($categories as $cat)
-                                <option value="{{$cat->id}}">{{$cat->category_name}}</option>
+                            <select name="category_id" class="categories" data-live-search="true">
+                                @foreach($subcategories as $sub_cat)
+                                <option value="{{$sub_cat->id}}">{{$sub_cat->subcategory_name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -214,7 +234,7 @@
 
 <script>
     // To style only selects with the my-select class
-    $('.categories').selectpicker();
+    $('.sub_categories').selectpicker();
 
     $(function() {
         $(document).on('click', '.edit-button', function(e) {

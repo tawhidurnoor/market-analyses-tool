@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\ProductSubcategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +15,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::join('product_subcategories', 'products.product_subcat_id', 'product_subcategories.id')
+            ->selectRaw('products.*, product_subcategories.subcategory_name as subcategory_name')
+            ->get();
+        $subcategories = ProductSubcategory::all();
+        return view('products.list.index', compact('products', 'subcategories'));
     }
 
     /**
@@ -35,7 +40,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product();
+        $product->product_name = $request->product_name;
+        $product->product_subcat_id = $request->product_subcat_id;
+        $product->mrp = $request->mrp;
+
+        $product->save();
+
+        session()->flash('success', 'Product stored successfully!');
+        return redirect()->back();
     }
 
     /**
