@@ -78,6 +78,7 @@
                                 @foreach($sales as $sale)
                                 <tr>
                                     <td> {{$loop->index+1}} </td>
+                                    <td> {{$sale->date}} </td>
                                     <td> {{$sale->product_name}} </td>
                                     <td> {{$sale->city_name}} </td>
                                     <td> {{$sale->subcategory_name}} </td>
@@ -125,7 +126,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <form action="{{route('product.store')}}" method="post">
+            <form action="{{route('sale.store')}}" method="post">
                 @csrf
                 <div class="modal-body">
                     <h2>Add Sale</h2>

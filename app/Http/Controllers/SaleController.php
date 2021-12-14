@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\City;
 use App\Product;
 use App\Sale;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
@@ -45,7 +46,16 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sale = new Sale();
+        $sale->date = Carbon::now()->format('Y-m-d');
+        $sale->product_id = $request->product_id;
+        $sale->city_id = $request->city_id;
+        $sale->sale_ammount = $request->sale_ammount;
+
+        $sale->save();
+
+        session()->flash('success', 'Sale stored successfully!');
+        return redirect()->back();
     }
 
     /**
