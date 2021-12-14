@@ -44,6 +44,10 @@
                             <i class="fa fa-tachometer" aria-hidden="true"></i> Home</a>
                     </li>
 
+                    <li class="{{ ( request()->segment(1)=='report' ) ? 'active':'' }}"> <a href="{{route('report.index')}}">
+                            <i class="fa fa-file-text" aria-hidden="true"></i> Market Analysis Report</a>
+                    </li>
+
                     <li class="{{ ( request()->segment(1)=='roles' || request()->segment(1)=='users' ) ? 'active':'' }}">
                         <a data-toggle="tab" href="#userManagement"><i class="fa fa-users" aria-hidden="true"></i> User Management</a>
                     </li>

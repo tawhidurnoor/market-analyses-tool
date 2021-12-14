@@ -31,6 +31,7 @@ Route::group(
         });
 
         Route::resource('/sale', 'SaleController');
+        Route::get('/report', 'ReportController@index')->name('report.index');
     }
 );
 
