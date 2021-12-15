@@ -1,7 +1,7 @@
 @extends('layouts.full.mainlayout')
 
 @section('head')
-<title>Market Analysis Report | Market Analysese Tool</title>
+<title>Trending Right Now | Market Analysese Tool</title>
 @endsection
 
 @section('body')

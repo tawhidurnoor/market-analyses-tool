@@ -2,15 +2,14 @@
 
 @section('head')
 <title>Product List | Market Analysese Tool</title>
-
 <!-- bootstrap select CSS
 		============================================ -->
 <link rel="stylesheet" href="{{asset('assets/css/bootstrap-select/bootstrap-select.css')}}">
-@endsection
-
 <!-- Data Table CSS
 ============================================ -->
 <link rel="stylesheet" href="{{asset('assets/css/jquery.dataTables.min.css')}}">
+@endsection
+
 @section('body')
 
 <!-- Breadcomb area Start-->
