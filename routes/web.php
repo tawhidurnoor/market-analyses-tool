@@ -31,7 +31,11 @@ Route::group(
         });
 
         Route::resource('/sale', 'SaleController');
-        Route::get('/report', 'ReportController@index')->name('report.index');
+
+        Route::prefix('report')->group(function () {
+            Route::get('/trending', 'ReportController@trending')->name('report.trending');
+            Route::get('/analysis', 'ReportController@index')->name('report.analysis');
+        });
     }
 );
 

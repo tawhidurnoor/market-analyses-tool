@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
-    public function index()
+    public function trending()
     {
         $date = Carbon::now()->subDays(7);
 
@@ -45,6 +45,6 @@ class ReportController extends Controller
             ->take(10)
             ->get();
 
-        return view('report.index', compact('most_sold_product', 'most_sold_subcategory', 'most_sold_category', 'popular_products'));
+        return view('report.trending', compact('most_sold_product', 'most_sold_subcategory', 'most_sold_category', 'popular_products'));
     }
 }

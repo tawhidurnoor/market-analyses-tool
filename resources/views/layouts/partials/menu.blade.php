@@ -44,8 +44,8 @@
                             <i class="fa fa-tachometer" aria-hidden="true"></i> Home</a>
                     </li>
 
-                    <li class="{{ ( request()->segment(1)=='report' ) ? 'active':'' }}"> <a href="{{route('report.index')}}">
-                            <i class="fa fa-file-text" aria-hidden="true"></i> Market Analysis Report</a>
+                    <li class="{{ ( request()->segment(1)=='report') ? 'active':'' }}">
+                        <a data-toggle="tab" href="#reportManagement"><i class="fa fa-file-text" aria-hidden="true"></i> Market Analysis Report</a>
                     </li>
 
                     <li class="{{ ( request()->segment(1)=='roles' || request()->segment(1)=='users' ) ? 'active':'' }}">
@@ -79,6 +79,15 @@
                             <li><a href="{{route('category.index')}}">Product Category</a>
                             </li>
                             <li><a href="{{route('product.index')}}">Product List</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="reportManagement" class="tab-pane {{ ( request()->segment(1)=='report' ) ? 'active':'' }} notika-tab-menu-bg animated flipInX">
+                        <ul class="notika-main-menu-dropdown">
+                            <li><a href="{{route('report.trending')}}">Trending Right Now</a>
+                            </li>
+                            <li><a href="{{route('report.analysis')}}">Analysis</a>
                             </li>
                         </ul>
                     </div>
