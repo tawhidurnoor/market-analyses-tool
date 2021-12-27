@@ -35,6 +35,7 @@ Route::group(
         Route::prefix('report')->group(function () {
             Route::get('/trending', 'ReportController@trending')->name('report.trending');
             Route::get('/analysis', 'ReportController@analysisIndex')->name('report.analysis');
+            Route::post('/analysis', 'ReportController@analysisResult')->name('report.analysisResult');
         });
     }
 );

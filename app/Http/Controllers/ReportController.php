@@ -90,4 +90,39 @@ class ReportController extends Controller
         $products = Product::all();
         return view('report.analysis', compact('districts', 'divisions', 'cities', 'categories', 'subcategories', 'products'));
     }
+
+    public function analysisResult(Request $request)
+    {
+        //return $request->div_id . " " . $request->dis_id . " " . $request->city_id . " " . $request->product_cat_id . " " . $request->product_subcat_id;
+        $code = '<div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30" style="height: 150px;">
+                    <div class="website-traffic-ctn">
+                        <h2><span class="counter">3500</span> Units</h2>
+                        <h3 class="text-success">Coca-Cola(Coke) - 400ml</h3>
+                        <p>Most Sold Product This Week</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30" style="height: 150px;">
+                    <div class="website-traffic-ctn">
+                        <h2><span class="counter">3500</span> Units</h2>
+                        <h3 class="text-primary">Carbonated Soft Drinks</h3>
+                        <p>Most Sold Product Subcategory This Week</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30" style="height: 150px;">
+                    <div class="website-traffic-ctn">
+                        <h2><span class="counter">7250</span> Units</h2>
+                        <h3 class="text-danger">Beverage</h3>
+                        <p>Most Sold Product Category This Week</p>
+                    </div>
+                </div>
+            </div>
+        </div>';
+        return $code;
+    }
 }
