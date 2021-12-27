@@ -82,15 +82,13 @@ class ReportController extends Controller
 
     public function analysisIndex()
     {
-        $returns =  Sale::where('product_id', 1)
-            ->select(DB::raw("(sum(sale_ammount)) as sale_ammount"))
-            ->whereBetween(
-                'date',
-                [Carbon::now()->subMonth(6), Carbon::now()]
-            )
-            ->groupBy(DB::raw("DATE_FORMAT(date, '%m-%Y')"))
-            ->get();
-        //return $returns;
+        $return = Sale::where('product_id', 2)
+            ->join('cities', 'sales.city_id', 'cities.id')
+            ->selectRaw('sum(sales.sale_ammount) as sale_ammount, cities.city_name as city_name')
+            ->groupBy('cities.city_name')
+            ->orderBy('sale_ammount', 'desc')
+            ->first();
+        //return $return;
 
         $districts = District::all();
         $divisions = Division::all();
@@ -116,11 +114,52 @@ class ReportController extends Controller
                 if ($request->product_id) {
                     //Only Product is selected
 
-                    $html = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="bar-chart-wp">
-                                    <canvas height="100vh" id="barchart"></canvas>
+                    $html = '<div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="bar-chart-wp">
+                                        <canvas height="100vh" id="barchart"></canvas>
+                                    </div>
                                 </div>
                             </div>';
+
+                    $most_sold_city = Sale::where('product_id', $request->product_id)
+                        ->join('cities', 'sales.city_id', 'cities.id')
+                        ->selectRaw('sum(sales.sale_ammount) as sale_ammount, cities.city_name as city_name')
+                        ->groupBy('cities.city_name')
+                        ->orderBy('sale_ammount', 'desc')
+                        ->first();
+
+                    $html .= '<br><br>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30" style="height: 150px;">
+                                <div class="website-traffic-ctn">
+                                    <h2><span class="counter">' . $most_sold_city->sale_ammount . '</span> Units</h2>
+                                    <h3 class="text-success">' . $most_sold_city->city_name . '</h3>
+                                    <p>Most Sold in ihis City</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30" style="height: 150px;">
+                                <div class="website-traffic-ctn">
+                                    <h2><span class="counter">3500</span> Units</h2>
+                                    <h3 class="text-primary">Carbonated Soft Drinks</h3>
+                                    <p>Most Sold Product Subcategory This Week</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30" style="height: 150px;">
+                                <div class="website-traffic-ctn">
+                                    <h2><span class="counter">3500</span> Units</h2>
+                                    <h3 class="text-danger">Beverage</h3>
+                                    <p>Most Sold Product Category This Week</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+
                     $six_month_sales_report = Sale::where('product_id', $request->product_id)
                         ->select(DB::raw("(sum(sale_ammount)) as sale_ammount"))
                         ->whereBetween(

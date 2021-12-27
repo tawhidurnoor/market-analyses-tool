@@ -223,8 +223,8 @@
                                 datasets: [{
                                     label: 'Sales Report',
                                     data: barchart_data,
-                                    backgroundColor: 'rgb(50,205,50, 0.2)',
-                                    borderColor: 'rgba(54, 162, 235, 1)',
+                                    backgroundColor: 'rgba(0,170,136, 0.7)',
+                                    borderColor: 'rgb(19,74,41)',
                                     borderWidth: 1
                                 }]
                             },
