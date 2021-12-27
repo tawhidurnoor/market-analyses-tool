@@ -26,11 +26,11 @@
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                            <div class="breadcomb-report">
+                            <!-- <div class="breadcomb-report">
                                 <button data-toggle="modal" data-target="#add_modal" data-placement="left" title="Add A Subcategory" class="btn">
                                     <i class="fa fa-plus-square" aria-hidden="true"></i> Add
                                 </button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -144,15 +144,22 @@
                             <button type="submit" class="btn">
                                 <i class="fa fa-plus-square" aria-hidden="true"></i> Generate
                             </button>
+
                         </center>
                     </form>
 
-                    <div id="report">
-                        <!-- Reports Returns here afer form submission -->
-                    </div>
-
                 </div>
             </div>
+        </div>
+
+        <br><br>
+        <section id="report">
+            <!-- Reports Returns here afer form submission -->
+        </section>
+        <br><br>
+
+        <div class="row">
+
         </div>
 
     </div>
@@ -168,6 +175,9 @@
 <!-- bootstrap select JS
 		============================================ -->
 <script src="{{asset('assets/js/bootstrap-select/bootstrap-select.js')}}"></script>
+<!-- Charts JS
+		============================================ -->
+<script src="{{asset('assets/js/charts/Chart.js')}}"></script>
 <script>
     $('.select_picker').selectpicker();
 </script>
@@ -187,12 +197,93 @@
             url: "../../report/analysis",
             data: form.serialize(), // serializes the form's elements.
             success: function(data) {
-                //alert(data); // show response from the php script.
-                $('#report').html(data);
+
+                $('#report').html(data.html);
+                //console.log(Object.values(data.data));
+
+                if (data.html.includes("barchart")) {
+                    (function($) {
+                        "use strict";
+                        /*----------------------------------------*/
+                        /*  1.  Bar Chart
+                        /*----------------------------------------*/
+
+                        var barchart_data = [];
+                        Object.keys(data.data).forEach((key) => {
+                            barchart_data.push(data.data[key].sale_ammount);
+                        });
+                        //console.log(barchart_data);
+
+                        var ctx = document.getElementById("barchart");
+                        var barchart1 = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                //labels: ["Month 1", "Month 2", "Month 3", "Month 4", "Month 5", "Month 6"],
+                                labels: Object.keys(data.data),
+                                datasets: [{
+                                    label: 'Sales Report',
+                                    data: barchart_data,
+                                    backgroundColor: 'rgb(50,205,50, 0.2)',
+                                    borderColor: 'rgba(54, 162, 235, 1)',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+
+
+
+                    })(jQuery);
+                }
+
             }
         });
 
 
     });
+</script>
+
+<script>
+    (function($) {
+        "use strict";
+        /*----------------------------------------*/
+        /*  1.  Bar Chart
+        /*----------------------------------------*/
+
+        var ctx = document.getElementById("barchart1");
+        var barchart1 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Month 1", "Month 2", "Month 3", "Month 4", "Month 5", "Month 6"],
+                datasets: [{
+                    label: 'Bar Chart',
+                    data: [3, 25, 13, 19, 27, 35],
+                    backgroundColor: 'rgb(50,205,50, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+
+
+    })(jQuery);
 </script>
 @endsection

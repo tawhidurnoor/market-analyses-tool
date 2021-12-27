@@ -82,6 +82,16 @@ class ReportController extends Controller
 
     public function analysisIndex()
     {
+        $returns =  Sale::where('product_id', 1)
+            ->select(DB::raw("(sum(sale_ammount)) as sale_ammount"))
+            ->whereBetween(
+                'date',
+                [Carbon::now()->subMonth(6), Carbon::now()]
+            )
+            ->groupBy(DB::raw("DATE_FORMAT(date, '%m-%Y')"))
+            ->get();
+        //return $returns;
+
         $districts = District::all();
         $divisions = Division::all();
         $cities = City::all();
@@ -93,36 +103,47 @@ class ReportController extends Controller
 
     public function analysisResult(Request $request)
     {
+
+        if (!$request->div_id && !$request->dis_id && !$request->city_id && !$request->product_cat_id && !$request->product_subcat_id && !$request->product_id) {
+            return 'faka';
+        } else {
+            if ($request->div_id || $request->dis_id || $request->city_id) {
+                //location selected
+                return "Location selected";
+            } else {
+                //location not selected
+                //now I have to checke wihch one form product is selected
+                if ($request->product_id) {
+                    //Only Product is selected
+
+                    $html = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="bar-chart-wp">
+                                    <canvas height="100vh" id="barchart"></canvas>
+                                </div>
+                            </div>';
+                    $six_month_sales_report = Sale::where('product_id', $request->product_id)
+                        ->select(DB::raw("(sum(sale_ammount)) as sale_ammount"))
+                        ->whereBetween(
+                            'date',
+                            [Carbon::now()->subMonth(6), Carbon::now()]
+                        )
+                        ->groupBy(DB::raw("DATE_FORMAT(date, '%m-%Y')"))
+                        ->get();
+
+                    $data = [5, 3, 6, 7, 3, 9];
+                    return [
+                        'html' => $html,
+                        'data' => $six_month_sales_report,
+                    ];
+                } elseif ($request->product_subcat_id) {
+                    return 'Product not selected but subcat selected';
+                } else {
+                    return 'Product and Subcat not selected but cat is selected';
+                }
+                return "Location not selected";
+            }
+        }
         //return $request->div_id . " " . $request->dis_id . " " . $request->city_id . " " . $request->product_cat_id . " " . $request->product_subcat_id;
-        $code = '<div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30" style="height: 150px;">
-                    <div class="website-traffic-ctn">
-                        <h2><span class="counter">3500</span> Units</h2>
-                        <h3 class="text-success">Coca-Cola(Coke) - 400ml</h3>
-                        <p>Most Sold Product This Week</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30" style="height: 150px;">
-                    <div class="website-traffic-ctn">
-                        <h2><span class="counter">3500</span> Units</h2>
-                        <h3 class="text-primary">Carbonated Soft Drinks</h3>
-                        <p>Most Sold Product Subcategory This Week</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30" style="height: 150px;">
-                    <div class="website-traffic-ctn">
-                        <h2><span class="counter">7250</span> Units</h2>
-                        <h3 class="text-danger">Beverage</h3>
-                        <p>Most Sold Product Category This Week</p>
-                    </div>
-                </div>
-            </div>
-        </div>';
-        return $code;
+
     }
 }
