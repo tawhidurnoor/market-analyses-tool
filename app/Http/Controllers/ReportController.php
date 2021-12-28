@@ -101,16 +101,26 @@ class ReportController extends Controller
 
     public function test()
     {
-        $return = Sale::where('product_id', 2)
-            ->select(DB::raw("(sum(sale_ammount)) as sale_ammount"), DB::raw("DATE_FORMAT(date, '%M-%Y') as month"))
+        $products = Product::where('product_subcat_id', 3)
+            ->select('id')
+            ->get();
+        $product_ids = [];
+        foreach ($products as $p) {
+            array_push($product_ids, $p->id);
+        }
+
+        $most_sold_product = Sale::whereIn('product_id', $product_ids)
+            ->join('products', 'sales.product_id', 'products.id')
+            ->selectRaw('sum(sales.sale_ammount) as sale_ammount, products.product_name as product_name')
             ->whereBetween(
                 'date',
                 [Carbon::now()->subMonth(6), Carbon::now()]
             )
-            ->groupBy(DB::raw("DATE_FORMAT(date, '%M-%Y')"))
-            ->get();
+            ->groupBy('product_name')
+            ->orderBy('sale_ammount', 'desc')
+            ->first();
 
-        return $return;
+        return $most_sold_product;
     }
 
     public function analysisResult(Request $request)
@@ -125,8 +135,7 @@ class ReportController extends Controller
             } else {
                 //location not selected
                 //now I have to checke wihch one form product is selected
-                if ($request->product_id) {
-                    //Only Product is selected
+                if ($request->product_id) { //Only Product is selected
 
                     $most_sold_city = Sale::where('product_id', $request->product_id)
                         ->join('cities', 'sales.city_id', 'cities.id')
@@ -218,12 +227,126 @@ class ReportController extends Controller
                         'html' => $html,
                         'data' => $six_month_sales_report,
                     ];
-                } elseif ($request->product_subcat_id) {
-                    return 'Product not selected but subcat selected';
+                } elseif ($request->product_subcat_id) { //Product not selected but subcat selected
+
+                    $products = Product::where('product_subcat_id', $request->product_subcat_id)
+                        ->select('id')
+                        ->get();
+                    $product_ids = [];
+                    foreach ($products as $p) {
+                        array_push($product_ids, $p->id);
+                    }
+
+                    $most_sold_product = Sale::whereIn('product_id', $product_ids)
+                        ->join('products', 'sales.product_id', 'products.id')
+                        ->selectRaw('sum(sales.sale_ammount) as sale_ammount, products.product_name as product_name')
+                        ->whereBetween(
+                            'date',
+                            [Carbon::now()->subMonth(6), Carbon::now()]
+                        )
+                        ->groupBy('product_name')
+                        ->orderBy('sale_ammount', 'desc')
+                        ->first();
+
+                    // $most_sold_city = Sale::where('product_id', $request->product_id)
+                    //     ->join('cities', 'sales.city_id', 'cities.id')
+                    //     ->selectRaw('sum(sales.sale_ammount) as sale_ammount, cities.city_name as city_name')
+                    //     ->whereBetween(
+                    //         'date',
+                    //         [Carbon::now()->subMonth(6), Carbon::now()]
+                    //     )
+                    //     ->groupBy('cities.city_name')
+                    //     ->orderBy('sale_ammount', 'desc')
+                    //     ->first();
+
+                    // $most_sold_district = Sale::where('product_id', $request->product_id)
+                    //     ->join('cities', 'sales.city_id', 'cities.id')
+                    //     ->join('districts', 'cities.district_id', 'districts.id')
+                    //     ->groupBy('districts.district_name')
+                    //     ->selectRaw('sum(sales.sale_ammount) as sale_ammount, districts.district_name as district_name')
+                    //     ->whereBetween(
+                    //         'date',
+                    //         [Carbon::now()->subMonth(6), Carbon::now()]
+                    //     )
+                    //     ->orderBy('sale_ammount', 'desc')
+                    //     ->first();
+
+                    // $most_sold_division = Sale::where('product_id', $request->product_id)
+                    //     ->join('cities', 'sales.city_id', 'cities.id')
+                    //     ->join('districts', 'cities.district_id', 'districts.id')
+                    //     ->join('divisions', 'districts.division_id', 'divisions.id')
+                    //     ->groupBy('divisions.division_name')
+                    //     ->selectRaw('sum(sales.sale_ammount) as sale_ammount, divisions.division_name as division_name')
+                    //     ->whereBetween(
+                    //         'date',
+                    //         [Carbon::now()->subMonth(6), Carbon::now()]
+                    //     )
+                    //     ->orderBy('sale_ammount', 'desc')
+                    //     ->first();
+
+                    $html = '<h3>Sales Statistics</h3>
+                     <p>Sales Statistics of last 6 months(if available)</p>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30" style="height: 150px;">
+                                <div class="website-traffic-ctn">
+                                    <h2><span class="counter">' . $most_sold_product->sale_ammount . '</span> Units</h2>
+                                    <h3 class="text-success">' . $most_sold_product->product_name . '</h3>
+                                    <p>Most Sold in ihis Subcategory</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30" style="height: 150px;">
+                                <div class="website-traffic-ctn">
+                                    <h2><span class="counter">' . 0 . '</span> Units</h2>
+                                    <h3 class="text-primary">' . 0 . '</h3>
+                                    <p>Most Sold in ihis District</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30" style="height: 150px;">
+                                <div class="website-traffic-ctn">
+                                    <h2><span class="counter">' . 0 . '</span> Units</h2>
+                                    <h3 class="text-danger">' . 0 . '</h3>
+                                    <p>Most Sold in ihis Division</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+
+                    // $html .= '<br><br>
+                    //         <div class="row">
+                    //             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    //                 <div class="bar-chart-wp">
+                    //                     <canvas height="100vh" id="barchart"></canvas>
+                    //                 </div>
+                    //             </div>
+                    //         </div>';
+
+                    // $six_month_sales_report = Sale::where('product_id', $request->product_id)
+                    //     ->select(DB::raw("(sum(sale_ammount)) as sale_ammount"), DB::raw("DATE_FORMAT(date, '%M-%Y') as month"))
+                    //     ->whereBetween(
+                    //         'date',
+                    //         [Carbon::now()->subMonth(6), Carbon::now()]
+                    //     )
+                    //     ->groupBy(DB::raw("DATE_FORMAT(date, '%M-%Y')"))
+                    //     ->get();
+
+                    return [
+                        'html' => $html,
+                        'data' => null,
+                    ];
                 } else {
-                    return 'Product and Subcat not selected but cat is selected';
+                    //Product and Subcat not selected but cat is selected
+                    return [
+                        'html' => 'Product and Subcat not selected but cat is selected',
+                        'data' => [],
+                    ];
                 }
-                return "Location not selected";
+
+                //return "Location not selected";
             }
         }
         //return $request->div_id . " " . $request->dis_id . " " . $request->city_id . " " . $request->product_cat_id . " " . $request->product_subcat_id;
