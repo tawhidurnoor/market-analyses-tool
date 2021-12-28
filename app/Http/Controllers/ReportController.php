@@ -104,8 +104,9 @@ class ReportController extends Controller
         $return = Sale::where('product_id', 2)
             ->join('cities', 'sales.city_id', 'cities.id')
             ->join('districts', 'cities.district_id', 'districts.id')
-            ->groupBy('districts.district_name')
-            ->selectRaw('sum(sales.sale_ammount) as sale_ammount, districts.district_name as district_name')
+            ->join('divisions', 'districts.division_id', 'divisions.id')
+            ->groupBy('divisions.division_name')
+            ->selectRaw('sum(sales.sale_ammount) as sale_ammount, divisions.division_name as division_name')
             ->orderBy('sale_ammount', 'desc')
             ->first();
 
@@ -150,6 +151,15 @@ class ReportController extends Controller
                         ->orderBy('sale_ammount', 'desc')
                         ->first();
 
+                    $most_sold_division = Sale::where('product_id', $request->product_id)
+                        ->join('cities', 'sales.city_id', 'cities.id')
+                        ->join('districts', 'cities.district_id', 'districts.id')
+                        ->join('divisions', 'districts.division_id', 'divisions.id')
+                        ->groupBy('divisions.division_name')
+                        ->selectRaw('sum(sales.sale_ammount) as sale_ammount, divisions.division_name as division_name')
+                        ->orderBy('sale_ammount', 'desc')
+                        ->first();
+
                     $html .= '<br><br>
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -173,9 +183,9 @@ class ReportController extends Controller
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                             <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30" style="height: 150px;">
                                 <div class="website-traffic-ctn">
-                                    <h2><span class="counter">' . $most_sold_district->sale_ammount . '</span> Units</h2>
-                                    <h3 class="text-danger">' . $most_sold_district->district_name . '</h3>
-                                    <p>Most Sold Product Category This Week</p>
+                                    <h2><span class="counter">' . $most_sold_division->sale_ammount . '</span> Units</h2>
+                                    <h3 class="text-danger">' . $most_sold_division->division_name . '</h3>
+                                    <p>Most Sold in ihis Division</p>
                                 </div>
                             </div>
                         </div>
