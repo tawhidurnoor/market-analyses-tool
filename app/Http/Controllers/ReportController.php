@@ -99,6 +99,19 @@ class ReportController extends Controller
         return view('report.analysis', compact('districts', 'divisions', 'cities', 'categories', 'subcategories', 'products'));
     }
 
+    public function test()
+    {
+        $return = Sale::where('product_id', 2)
+            ->join('cities', 'sales.city_id', 'cities.id')
+            ->join('districts', 'cities.district_id', 'districts.id')
+            ->groupBy('districts.district_name')
+            ->selectRaw('sum(sales.sale_ammount) as sale_ammount, districts.district_name as district_name')
+            ->orderBy('sale_ammount', 'desc')
+            ->first();
+
+        return $return;
+    }
+
     public function analysisResult(Request $request)
     {
 
@@ -129,6 +142,14 @@ class ReportController extends Controller
                         ->orderBy('sale_ammount', 'desc')
                         ->first();
 
+                    $most_sold_district = Sale::where('product_id', $request->product_id)
+                        ->join('cities', 'sales.city_id', 'cities.id')
+                        ->join('districts', 'cities.district_id', 'districts.id')
+                        ->groupBy('districts.district_name')
+                        ->selectRaw('sum(sales.sale_ammount) as sale_ammount, districts.district_name as district_name')
+                        ->orderBy('sale_ammount', 'desc')
+                        ->first();
+
                     $html .= '<br><br>
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -143,17 +164,17 @@ class ReportController extends Controller
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                             <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30" style="height: 150px;">
                                 <div class="website-traffic-ctn">
-                                    <h2><span class="counter">3500</span> Units</h2>
-                                    <h3 class="text-primary">Carbonated Soft Drinks</h3>
-                                    <p>Most Sold Product Subcategory This Week</p>
+                                    <h2><span class="counter">' . $most_sold_district->sale_ammount . '</span> Units</h2>
+                                    <h3 class="text-primary">' . $most_sold_district->district_name . '</h3>
+                                    <p>Most Sold in ihis District</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                             <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30" style="height: 150px;">
                                 <div class="website-traffic-ctn">
-                                    <h2><span class="counter">3500</span> Units</h2>
-                                    <h3 class="text-danger">Beverage</h3>
+                                    <h2><span class="counter">' . $most_sold_district->sale_ammount . '</span> Units</h2>
+                                    <h3 class="text-danger">' . $most_sold_district->district_name . '</h3>
                                     <p>Most Sold Product Category This Week</p>
                                 </div>
                             </div>
