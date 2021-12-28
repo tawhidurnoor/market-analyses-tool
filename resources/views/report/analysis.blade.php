@@ -212,6 +212,11 @@
                         Object.keys(data.data).forEach((key) => {
                             barchart_data.push(data.data[key].sale_ammount);
                         });
+
+                        var barcharat_labels = [];
+                        Object.keys(data.data).forEach((key) => {
+                            barcharat_labels.push(data.data[key].month);
+                        });
                         //console.log(barchart_data);
 
                         var ctx = document.getElementById("barchart");
@@ -219,9 +224,10 @@
                             type: 'bar',
                             data: {
                                 //labels: ["Month 1", "Month 2", "Month 3", "Month 4", "Month 5", "Month 6"],
-                                labels: Object.keys(data.data),
+                                //labels: Object.keys(data.data),
+                                labels: barcharat_labels,
                                 datasets: [{
-                                    label: 'Sales Report',
+                                    label: 'Sold Unit',
                                     data: barchart_data,
                                     backgroundColor: 'rgba(0,170,136, 0.7)',
                                     borderColor: 'rgb(19,74,41)',
