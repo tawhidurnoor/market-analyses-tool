@@ -32,6 +32,12 @@ class RolePermissionSeeder extends Seeder
                 ],
             ],
             [
+                'group_name' => 'analysis',
+                'permissions' => [
+                    'analysis.view',
+                ],
+            ],
+            [
                 'group_name' => 'users',
                 'permissions' => [
                     'users.create',
