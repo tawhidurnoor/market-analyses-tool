@@ -29,7 +29,8 @@ class RolesController extends Controller
      */
     public function index()
     {
-        if (is_null($this->user) || !$this->user->can('role.view')) {
+
+        if (is_null($this->user) || !$this->user->can('roles.view')) {
             abort(403, 'Sorry !! You are Unauthorized to view any role !');
         }
 

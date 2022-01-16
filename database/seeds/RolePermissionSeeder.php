@@ -17,8 +17,8 @@ class RolePermissionSeeder extends Seeder
 
         // Create Roles
         $roleSuperAdmin = Role::create(['name' => 'superadmin']);
-        $roleAdmin = Role::create(['name' => 'admin']);
-        $roleEditor = Role::create(['name' => 'editor']);
+        $roleProductManager = Role::create(['name' => 'product_manager']);
+        $roleSaleManager = Role::create(['name' => 'sale_manager']);
         $roleUser = Role::create(['name' => 'user']);
 
 
@@ -26,52 +26,64 @@ class RolePermissionSeeder extends Seeder
         $permissions = [
 
             [
-                'group_name' => 'dashboard',
+                'group_name' => 'trending',
                 'permissions' => [
-                    'dashboard.view',
-                    'dashboard.edit',
-                ]
+                    'trending.view',
+                ],
             ],
             [
-                'group_name' => 'blog',
+                'group_name' => 'users',
                 'permissions' => [
-                    // Blog Permissions
-                    'blog.create',
-                    'blog.view',
-                    'blog.edit',
-                    'blog.delete',
-                    'blog.approve',
-                ]
+                    'users.create',
+                    'users.view',
+                    'users.edit',
+                    'users.delete',
+                ],
             ],
             [
-                'group_name' => 'admin',
+                'group_name' => 'roles',
                 'permissions' => [
-                    // admin Permissions
-                    'admin.create',
-                    'admin.view',
-                    'admin.edit',
-                    'admin.delete',
-                    'admin.approve',
-                ]
+                    'roles.create',
+                    'roles.view',
+                    'roles.edit',
+                    'roles.delete',
+                ],
             ],
             [
-                'group_name' => 'role',
+                'group_name' => 'category',
                 'permissions' => [
-                    // role Permissions
-                    'role.create',
-                    'role.view',
-                    'role.edit',
-                    'role.delete',
-                    'role.approve',
-                ]
+                    'category.create',
+                    'category.view',
+                    'category.edit',
+                    'category.delete',
+                ],
             ],
             [
-                'group_name' => 'profile',
+                'group_name' => 'subcategory',
                 'permissions' => [
-                    // profile Permissions
-                    'profile.view',
-                    'profile.edit',
-                ]
+                    'subcategory.create',
+                    'subcategory.view',
+                    'subcategory.edit',
+                    'subcategory.delete',
+                ],
+            ],
+            [
+                'group_name' => 'products',
+                'permissions' => [
+                    'products.create',
+                    'products.view',
+                    'products.edit',
+                    'products.delete',
+                ],
+            ],
+            [
+                'group_name' => 'sale',
+                'permissions' => [
+                    'sale.create',
+                    'sale.view',
+                    'sale.edit',
+                    'sale.delete',
+                ],
             ],
         ];
 
